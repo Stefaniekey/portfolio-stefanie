@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stefanie Keyshya Ardadi - Portfolio Website</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            teal: '#14b8a6',
+                            purple: '#a855f7',
+                            cyan: '#06b6d4'
+                        },
+                        darkBg: '#0b0f19',
+                        cardBg: '#111827',
+                        cardBorder: '#1f2937'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #e5e7eb;
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 10px 30px -10px rgba(14, 165, 233, 0.2);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #38bdf8 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glow-effect {
+            position: relative;
+        }
+        .glow-effect::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #0ea5e9, #6366f1, #a855f7);
+            border-radius: inherit;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .glow-effect:hover::before {
+            opacity: 0.6;
+            filter: blur(8px);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f2937;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #0ea5e9;
+        }
+        .project-card .icon-container {
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover .icon-container {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased text-gray-300 selection:bg-brand-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-card border-b border-gray-800/80 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#hero" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 to-accent-purple flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-brand-500/30 group-hover:scale-105 transition-transform">
+                    SK
+                </div>
+                <div>
+                    <span class="font-bold text-lg text-white block leading-none">Stefanie K.</span>
+                    <span class="text-xs text-brand-400 font-mono">Informatics Engineer</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#about" class="hover:text-brand-400 transition-colors">About Me</a>
+                <a href="#experience" class="hover:text-brand-400 transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-brand-400 transition-colors">Projects & Research</a>
+                <a href="#skills" class="hover:text-brand-400 transition-colors">Skills</a>
+                <a href="#certifications" class="hover:text-brand-400 transition-colors">Certifications</a>
+                <a href="#contact" class="px-5 py-2.5 rounded-full bg-brand-500 hover:bg-brand-600 text-white font-semibold transition-all shadow-lg shadow-brand-500/25">
+                    Contact Me
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-300 hover:text-white focus:outline-none p-2" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-cardBg border-b border-gray-800 px-4 pt-2 pb-6 space-y-3">
+            <a href="#about" class="block py-2 text-gray-300 hover:text-brand-400 mobile-nav-link">About Me</a>
+            <a href="#experience" class="block py-2 text-gray-300 hover:text-brand-400 mobile-nav-link">Experience</a>
+            <a href="#projects" class="block py-2 text-gray-300 hover:text-brand-400 mobile-nav-link">Projects & Research</a>
+            <a href="#skills" class="block py-2 text-gray-300 hover:text-brand-400 mobile-nav-link">Skills</a>
+            <a href="#certifications" class="block py-2 text-gray-300 hover:text-brand-400 mobile-nav-link">Certifications</a>
+            <a href="#contact" class="block py-2.5 text-center rounded-lg bg-brand-500 text-white font-semibold mobile-nav-link">Contact Me</a>
+        </div>
+    </header>
+
+    <!-- Notification Banner / Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-brand-500 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center space-x-3 border border-white/20">
+        <i class="fa-solid fa-circle-check text-xl"></i>
+        <span id="toast-message" class="font-medium text-sm">Message sent!</span>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen pt-28 pb-16 flex items-center justify-center overflow-hidden">
+        <!-- Background Ambient Glow -->
+        <div class="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-500/10 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute bottom-10 right-10 w-[400px] h-[400px] bg-accent-purple/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
+                <!-- Left Info Content -->
+                <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs sm:text-sm font-semibold tracking-wide">
+                        <span class="w-2 h-2 rounded-full bg-brand-400 animate-ping"></span>
+                        <span>Seeking Career Opportunities in AI & Software Engineering</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                        Hello, I'm <br class="hidden sm:inline" />
+                        <span class="text-gradient">Stefanie Keyshya A.</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-gray-400 max-w-2xl font-light leading-relaxed">
+                        A <span class="text-white font-semibold">Fresh Graduate</span> in <span class="text-white font-semibold">Informatics Engineering</span> from Mercu Buana University (GPA 3.86). Focused on <span class="text-brand-400 font-semibold">Computer Vision</span>, <span class="text-brand-400 font-semibold">Artificial Intelligence</span>, and <span class="text-brand-400 font-semibold">Full-Stack Development</span>.
+                    </p>
+
+                    <!-- Quick Details Badge -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs sm:text-sm text-gray-400 font-mono pt-2">
+                        <div class="flex items-center space-x-2 bg-gray-900/80 px-3 py-1.5 rounded-lg border border-gray-800">
+                            <i class="fa-solid fa-location-dot text-brand-400"></i>
+                            <span>Tangerang, Indonesia</span>
+                        </div>
+                        <div class="flex items-center space-x-2 bg-gray-900/80 px-3 py-1.5 rounded-lg border border-gray-800">
+                            <i class="fa-solid fa-graduation-cap text-accent-cyan"></i>
+                            <span>GPA: 3.86 / 4.00</span>
+                        </div>
+                        <div class="flex items-center space-x-2 bg-gray-900/80 px-3 py-1.5 rounded-lg border border-gray-800">
+                            <i class="fa-solid fa-award text-amber-400"></i>
+                            <span>BNSP Certified</span>
+                        </div>
+                    </div>
+
+                    <!-- Call To Action Buttons -->
+                    <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-4">
+                        <a href="#projects" class="px-7 py-3.5 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold transition-all shadow-lg shadow-brand-500/25 flex items-center space-x-2 group">
+                            <span>View Portfolio</span>
+                            <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/stefaniekeyshya/" target="_blank" rel="noopener" class="px-7 py-3.5 rounded-xl glass-card hover:bg-gray-800 text-white font-semibold transition-all flex items-center space-x-2">
+                            <i class="fa-brands fa-linkedin text-brand-400 text-lg"></i>
+                            <span>LinkedIn Profile</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Profile Visual / Card -->
+                <div class="lg:col-span-5 flex justify-center">
+                    <div class="relative w-72 sm:w-80 lg:w-96">
+                        <!-- Neon Frame Backdrop -->
+                        <div class="absolute -inset-1.5 bg-gradient-to-r from-brand-500 via-accent-cyan to-accent-purple rounded-3xl blur-md opacity-75 animate-pulse"></div>
+
+                        <div class="relative glass-card rounded-3xl p-6 overflow-hidden flex flex-col items-center text-center">
+                            <div class="relative mb-5 group">
+                                <div class="w-44 h-44 sm:w-52 sm:h-52 rounded-2xl overflow-hidden border-2 border-brand-400/40 shadow-2xl relative bg-gray-900">
+                                    <!-- Professional Female Tech Portrait Image -->
+                                    <img id="profile-img"
+                                    src="C:\Users\Stefanie\Downloads\portfolio_stefanie\pastfoto.jpeg"
+                                    alt="Photo of Stefanie Keyshya Ardadi"
+                                    class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80';">
+
+                            </div>
+                            <div class="absolute bottom-2 right-2 bg-emerald-500 border-2 border-darkBg w-5 h-5 rounded-full shadow-lg" title="Available for Work/Projects"></div>
+                        </div>
+
+                        <h2 class="text-xl font-bold text-white mb-1">Stefanie Keyshya Ardadi</h2>
+                        <p class="text-xs text-brand-400 font-mono mb-3">Informatics Engineering Fresh Graduate</p>
+
+                        <!-- Stats Pill -->
+                        <div class="grid grid-cols-3 gap-2 w-full pt-4 border-t border-gray-800 text-center">
+                            <div class="p-2 rounded-lg bg-gray-900/50">
+                                <span class="block text-lg font-bold text-white">3.86</span>
+                                <span class="text-[10px] text-gray-400 uppercase tracking-wider">GPA</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-gray-900/50">
+                                <span class="block text-lg font-bold text-white">5+</span>
+                                <span class="text-[10px] text-gray-400 uppercase tracking-wider">Projects</span>
+                            </div>
+                            <div class="p-2 rounded-lg bg-gray-900/50">
+                                <span class="block text-lg font-bold text-white">45+</span>
+                                <span class="text-[10px] text-gray-400 uppercase tracking-wider">Certificates</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="py-20 relative bg-gray-950/50 border-t border-gray-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-xs font-mono text-brand-400 tracking-widest uppercase mb-2">Brief Profile</h2>
+            <p class="text-3xl sm:text-4xl font-bold text-white">About Stefanie Keyshya Ardadi</p>
+            <div class="w-16 h-1 bg-gradient-to-r from-brand-500 to-accent-purple mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+            <!-- Summary Text Card -->
+            <div class="lg:col-span-7 glass-card rounded-2xl p-8 flex flex-col justify-between">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-3 mb-2">
+                        <i class="fa-solid fa-user-astronaut text-2xl text-brand-400"></i>
+                        <h3 class="text-xl font-bold text-white">Professional Overview</h3>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed">
+                        I am a Fresh Graduate in Informatics Engineering from Mercu Buana University with a strong passion for artificial intelligence, digital image processing (computer vision), and web/mobile application development.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed text-sm">
+                        I have hands-on experience through academic research on CNN & Vision Transformer (ViT)-based medical classification systems, developing an AI-powered e-commerce system with the DeepSeek API, and an industry internship as a Web Developer for an enterprise inventory management system.
+                    </p>
+                </div>
+
+                <!-- Details Highlight Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-6 border-t border-gray-800 mt-6">
+                    <div class="flex items-start space-x-3">
+                        <div class="p-2.5 bg-brand-500/10 rounded-lg text-brand-400">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 block">Education</span>
+                            <span class="text-sm font-semibold text-white">B.S. Informatics Engineering</span>
+                            <span class="text-xs text-gray-400 block">Mercu Buana (2022-2026)</span>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start space-x-3">
+                        <div class="p-2.5 bg-accent-purple/10 rounded-lg text-accent-purple">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 block">Core Competencies</span>
+                            <span class="text-sm font-semibold text-white">Computer Vision & Web Dev</span>
+                            <span class="text-xs text-gray-400 block">BNSP & Oracle Certified</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Personal Info & Languages -->
+            <div class="lg:col-span-5 space-y-6">
+                <!-- Languages Box -->
+                <div class="glass-card rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-white mb-4 flex items-center space-x-2">
+                        <i class="fa-solid fa-language text-brand-400"></i>
+                        <span>Language Proficiency</span>
+                    </h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-white font-medium">Indonesian</span>
+                                <span class="text-brand-400 font-mono text-xs">Native Speaker</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-brand-500 h-2 rounded-full w-full"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-white font-medium">English</span>
+                                <span class="text-accent-cyan font-mono text-xs">Intermediate (TOEFL 660)</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-accent-cyan h-2 rounded-full w-[85%]"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between text-sm mb-1">
+                                <span class="text-white font-medium">Mandarin</span>
+                                <span class="text-gray-400 font-mono text-xs">Beginner</span>
+                            </div>
+                            <div class="w-full bg-gray-800 rounded-full h-2">
+                                <div class="bg-accent-purple h-2 rounded-full w-[30%]"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Organization & Leadership Box -->
+                <div class="glass-card rounded-2xl p-6">
+                    <h3 class="text-lg font-bold text-white mb-3 flex items-center space-x-2">
+                        <i class="fa-solid fa-users text-amber-400"></i>
+                        <span>Organizational Experience</span>
+                    </h3>
+                    <div class="border-l-2 border-brand-500 pl-4 space-y-1">
+                        <h4 class="text-sm font-bold text-white">Student Executive Board (BEM)</h4>
+                        <p class="text-xs text-brand-400 font-mono">Faculty of Computer Science | Sep 2024 - Sep 2025</p>
+                        <p class="text-xs text-gray-400 pt-1">Student Development Division. Organized skills training, leadership workshops, and cross-division collaborative activities.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experience Timeline Section -->
+<section id="experience" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-xs font-mono text-brand-400 tracking-widest uppercase mb-2">Career & Research Track</h2>
+            <p class="text-3xl sm:text-4xl font-bold text-white">Work & Research Experience</p>
+            <div class="w-16 h-1 bg-gradient-to-r from-brand-500 to-accent-purple mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="relative border-l-2 border-gray-800 ml-4 md:ml-32 space-y-12">
+
+            <!-- Experience Item 1 -->
+            <div class="relative group">
+                <!-- Date Badge Desktop side -->
+                <div class="hidden md:block absolute -left-36 top-1.5 text-right w-28">
+                    <span class="text-xs font-mono text-brand-400 font-semibold">Aug 2026 - Present</span>
+                </div>
+                <!-- Bullet Dot -->
+                <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-cardBg border-2 border-brand-500 flex items-center justify-center text-brand-400 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-lungs-virus text-xs"></i>
+                </div>
+
+                <div class="ml-8 md:ml-12 glass-card rounded-2xl p-6 sm:p-8">
+                    <span class="md:hidden text-xs font-mono text-brand-400 font-semibold block mb-2">Aug 2026 - Present</span>
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <h3 class="text-xl font-bold text-white">LightXAI-WaveNet: Hybrid CNN-ViT for Lung Nodule Detection</h3>
+                        <span class="px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-mono">Computer Vision / Deep Learning</span>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-400 mb-4">Mercu Buana University</p>
+
+                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                        <li>Developed an AI-based lung cancer detection system using Python, CNN, and Vision Transformer (ViT) for multi-class medical image classification.</li>
+                        <li>Designed a hybrid feature extraction pipeline (DWT, SVD) that improved model accuracy to 80%.</li>
+                        <li>Built and evaluated deep learning models for lung image classification (Normal, Benign, Malignant).</li>
+                        <li>Designed an interactive GUI application for image processing and automated visualization.</li>
+                        <li>Applied ensemble learning, confidence scoring, and optimized/migrated algorithms from MATLAB to Python.</li>
+                    </ul>
+
+                    <div class="flex flex-wrap gap-2 mt-5 pt-4 border-t border-gray-800/60">
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Python</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">PyTorch</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Vision Transformer (ViT)</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">3D CNN</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Cross-Attention</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">DWT-SVD</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Grad-CAM</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Streamlit</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Item 2 -->
+            <div class="relative group">
+                <div class="hidden md:block absolute -left-36 top-1.5 text-right w-28">
+                    <span class="text-xs font-mono text-brand-400 font-semibold">Dec 2025 - Jan 2026</span>
+                </div>
+                <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-cardBg border-2 border-accent-cyan flex items-center justify-center text-accent-cyan group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-microscope text-xs"></i>
+                </div>
+
+                <div class="ml-8 md:ml-12 glass-card rounded-2xl p-6 sm:p-8">
+                    <span class="md:hidden text-xs font-mono text-brand-400 font-semibold block mb-2">Oct 2025 - Dec 2025</span>
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <h3 class="text-xl font-bold text-white">Research Assistant - Lung Cancer Detection System</h3>
+                        <span class="px-3 py-1 rounded-full bg-accent-cyan/10 border border-accent-cyan/30 text-accent-cyan text-xs font-mono">Computer Vision / Deep Learning</span>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-400 mb-4">Mercu Buana University</p>
+
+                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                        <li>Developed an AI-based lung cancer detection system using Python, CNN, and Vision Transformer (ViT) for multi-class medical image classification.</li>
+                        <li>Designed a hybrid feature extraction pipeline (DWT, SVD) that improved model accuracy to 80%.</li>
+                        <li>Built and evaluated deep learning models for lung image classification (Normal, Benign, Malignant).</li>
+                        <li>Designed an interactive GUI application for image processing and automated visualization.</li>
+                        <li>Applied ensemble learning, confidence scoring, and optimized/migrated algorithms from MATLAB to Python.</li>
+                    </ul>
+
+                    <div class="flex flex-wrap gap-2 mt-5 pt-4 border-t border-gray-800/60">
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Python</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">CNN</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Vision Transformer (ViT)</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">DWT & SVD</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">PyQt/GUI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Item 3 -->
+            <div class="relative group">
+                <div class="hidden md:block absolute -left-36 top-1.5 text-right w-28">
+                    <span class="text-xs font-mono text-brand-400 font-semibold">Oct 2025 - Dec 2025</span>
+                </div>
+                <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-cardBg border-2 border-accent-cyan flex items-center justify-center text-accent-cyan group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-microscope text-xs"></i>
+                </div>
+
+                <div class="ml-8 md:ml-12 glass-card rounded-2xl p-6 sm:p-8">
+                    <span class="md:hidden text-xs font-mono text-brand-400 font-semibold block mb-2">Oct 2025 - Dec 2025</span>
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <h3 class="text-xl font-bold text-white">Lead Researcher - Flower Species Classification (CNN + DWT)</h3>
+                        <span class="px-3 py-1 rounded-full bg-accent-cyan/10 border border-accent-cyan/30 text-accent-cyan text-xs font-mono">Scientific Journal Publication</span>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-400 mb-4">Mercu Buana University</p>
+
+                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                        <li>Developed an end-to-end image classification system using CNN + Discrete Wavelet Transform (DWT) for 5 classes with 3,000+ image samples.</li>
+                        <li>Improved model accuracy from 81.29% to 82.73% through wavelet-based preprocessing techniques.</li>
+                        <li>Applied Grad-CAM for model explainability and feature visualization.</li>
+                        <li>Built an interactive GUI for automated classification workflows and published the research in a peer-reviewed journal.</li>
+                    </ul>
+
+                    <div class="flex flex-wrap gap-2 mt-5 pt-4 border-t border-gray-800/60">
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Image Processing</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Grad-CAM</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">DWT</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Peer-Reviewed Journal</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Item 4 -->
+            <div class="relative group">
+                <div class="hidden md:block absolute -left-36 top-1.5 text-right w-28">
+                    <span class="text-xs font-mono text-brand-400 font-semibold">July 2025</span>
+                </div>
+                <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-cardBg border-2 border-amber-400 flex items-center justify-center text-amber-400 group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-trophy text-xs"></i>
+                </div>
+
+                <div class="ml-8 md:ml-12 glass-card rounded-2xl p-6 sm:p-8">
+                    <span class="md:hidden text-xs font-mono text-brand-400 font-semibold block mb-2">July 2025</span>
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <h3 class="text-xl font-bold text-white">National Competition Participant - AI-Powered E-Commerce</h3>
+                        <span class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono">Bronze Medal 🥉</span>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-400 mb-4">Mercu Buana University</p>
+
+                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                        <li>Developed an intelligent e-commerce platform with a multilingual recommendation system.</li>
+                        <li>Led the integration of the DeepSeek API for automated, personalized fashion consultation services.</li>
+                        <li>Implemented the frontend interface (Bootstrap) and backend logic for smart product search & fast transactions.</li>
+                        <li>Won the Bronze Medal for AI-based innovative solutions.</li>
+                    </ul>
+
+                    <div class="flex flex-wrap gap-2 mt-5 pt-4 border-t border-gray-800/60">
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">DeepSeek API</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">LLM Integration</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Bootstrap</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Recommender System</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Experience Item 5 -->
+            <div class="relative group">
+                <div class="hidden md:block absolute -left-36 top-1.5 text-right w-28">
+                    <span class="text-xs font-mono text-brand-400 font-semibold">Mar 2025 - Jun 2025</span>
+                </div>
+                <div class="absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-cardBg border-2 border-accent-purple flex items-center justify-center text-accent-purple group-hover:scale-110 transition-transform">
+                    <i class="fa-solid fa-code text-xs"></i>
+                </div>
+
+                <div class="ml-8 md:ml-12 glass-card rounded-2xl p-6 sm:p-8">
+                    <span class="md:hidden text-xs font-mono text-brand-400 font-semibold block mb-2">Mar 2025 - Jun 2025</span>
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                        <h3 class="text-xl font-bold text-white">Web Developer Internship</h3>
+                        <span class="px-3 py-1 rounded-full bg-accent-purple/10 border border-accent-purple/30 text-accent-purple text-xs font-mono">Industry Internship</span>
+                    </div>
+                    <p class="text-sm font-semibold text-gray-400 mb-4">CV Prima Bella Panen Rejeki</p>
+
+                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                        <li>Developed an inventory management system to digitize and automate internal business processes.</li>
+                        <li>Designed core features: supplier management, real-time stock tracking, purchase orders, and dynamic reporting systems.</li>
+                        <li>Improved inventory data accuracy, operational time efficiency, and company stock visibility.</li>
+                        <li>Contributed to the frontend development of the company's company profile website.</li>
+                    </ul>
+
+                    <div class="flex flex-wrap gap-2 mt-5 pt-4 border-t border-gray-800/60">
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">PHP / Laravel</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">SQL Database</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">REST API</span>
+                        <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Company Profile</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Interactive Projects Showcase Section -->
+<section id="projects" class="py-20 relative bg-gray-950/40 border-t border-gray-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-12">
+            <h2 class="text-xs font-mono text-brand-400 tracking-widest uppercase mb-2">Work Showcase</h2>
+            <p class="text-3xl sm:text-4xl font-bold text-white">Projects & Research Results</p>
+            <div class="w-16 h-1 bg-gradient-to-r from-brand-500 to-accent-purple mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button class="project-filter-btn px-5 py-2 rounded-xl bg-brand-500 text-white font-medium text-sm transition-all" data-filter="all">All Projects</button>
+            <button class="project-filter-btn px-5 py-2 rounded-xl glass-card text-gray-400 hover:text-white font-medium text-sm transition-all" data-filter="ai">AI & Computer Vision</button>
+            <button class="project-filter-btn px-5 py-2 rounded-xl glass-card text-gray-400 hover:text-white font-medium text-sm transition-all" data-filter="web">Web Development</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Card 1 -->
+            <div class="project-card glass-card rounded-2xl overflow-hidden group flex flex-col justify-between" data-category="ai">
+                <div>
+                    <div class="relative h-48 bg-gradient-to-br from-slate-900 to-blue-950 flex items-center justify-center p-6 border-b border-gray-800">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-lungs-virus text-6xl text-brand-400/80 group-hover:scale-110 transition-transform duration-300"></i>
+                        </div>
+                        <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-brand-500/20 text-brand-400 border border-brand-500/40 text-xs font-mono">Deep Learning</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-brand-400 transition-colors">Lung Cancer Detection System</h3>
+                        <p class="text-xs text-gray-400 mb-4 line-clamp-3">A multi-class medical image classification system based on CNN and Vision Transformer (ViT) with a hybrid DWT + SVD feature extraction pipeline that improved accuracy to 80%.</p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">Python</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">Vision Transformer</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">DWT-SVD</span>
+                    </div>
+                    <button onclick="openModal('modal-lung')" class="w-full py-2 rounded-lg bg-gray-800 hover:bg-brand-500 hover:text-white text-gray-300 text-xs font-semibold transition-colors flex items-center justify-center space-x-2">
+                        <span>Project Details</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="project-card glass-card rounded-2xl overflow-hidden group flex flex-col justify-between" data-category="ai">
+                <div>
+                    <div class="relative h-48 bg-gradient-to-br from-slate-900 to-emerald-950 flex items-center justify-center p-6 border-b border-gray-800">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-seedling text-6xl text-emerald-400/80 group-hover:scale-110 transition-transform duration-300"></i>
+                        </div>
+                        <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs font-mono">Scientific Journal</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">Flower Classification (CNN + DWT)</h3>
+                        <p class="text-xs text-gray-400 mb-4 line-clamp-3">Image processing research on 3,000+ data samples across 5 flower species. Uses wavelet preprocessing and Grad-CAM for model transparency visualization.</p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">CNN</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">Grad-CAM</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">GUI App</span>
+                    </div>
+                    <button onclick="openModal('modal-flower')" class="w-full py-2 rounded-lg bg-gray-800 hover:bg-emerald-500 hover:text-white text-gray-300 text-xs font-semibold transition-colors flex items-center justify-center space-x-2">
+                        <span>Project Details</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="project-card glass-card rounded-2xl overflow-hidden group flex flex-col justify-between" data-category="web">
+                <div>
+                    <div class="relative h-48 bg-gradient-to-br from-slate-900 to-amber-950 flex items-center justify-center p-6 border-b border-gray-800">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-cart-shopping text-6xl text-amber-400/80 group-hover:scale-110 transition-transform duration-300"></i>
+                        </div>
+                        <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-500/40 text-xs font-mono">Competition 🥉</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">AI E-Commerce & Recommendation</h3>
+                        <p class="text-xs text-gray-400 mb-4 line-clamp-3">E-commerce platform with a multilingual recommendation system and DeepSeek API integration for personalized fashion consultation.</p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">DeepSeek API</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">Bootstrap</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">AI Search</span>
+                    </div>
+                    <button onclick="openModal('modal-ecommerce')" class="w-full py-2 rounded-lg bg-gray-800 hover:bg-amber-500 hover:text-white text-gray-300 text-xs font-semibold transition-colors flex items-center justify-center space-x-2">
+                        <span>Project Details</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="project-card glass-card rounded-2xl overflow-hidden group flex flex-col justify-between" data-category="web">
+                <div>
+                    <div class="relative h-48 bg-gradient-to-br from-slate-900 to-purple-950 flex items-center justify-center p-6 border-b border-gray-800">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-warehouse text-6xl text-purple-400/80 group-hover:scale-110 transition-transform duration-300"></i>
+                        </div>
+                        <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 border border-purple-500/40 text-xs font-mono">Internship</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-purple-400 transition-colors">Enterprise Inventory Management</h3>
+                        <p class="text-xs text-gray-400 mb-4 line-clamp-3">Stock & inventory management system for CV Prima Bella Panen Rejeki featuring supplier tracking, purchase orders, and automated reporting analysis.</p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">Laravel/PHP</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">SQL Database</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">Enterprise Dashboard</span>
+                    </div>
+                    <button onclick="openModal('modal-inventory')" class="w-full py-2 rounded-lg bg-gray-800 hover:bg-purple-500 hover:text-white text-gray-300 text-xs font-semibold transition-colors flex items-center justify-center space-x-2">
+                        <span>Project Details</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Card 5: LightXAI-WaveNet -->
+            <div class="project-card glass-card rounded-2xl overflow-hidden group flex flex-col justify-between" data-category="ai">
+                <div>
+                    <div class="relative h-48 bg-gradient-to-br from-slate-900 to-cyan-950 flex items-center justify-center p-6 border-b border-gray-800">
+                        <div class="icon-container">
+                            <i class="fa-solid fa-wave-square text-6xl text-cyan-400/80 group-hover:scale-110 transition-transform duration-300"></i>
+                        </div>
+                        <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/40 text-xs font-mono">Research</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-lg font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors">LightXAI-WaveNet: Lung Nodule Classification</h3>
+                        <p class="text-xs text-gray-400 mb-4 line-clamp-3">Explainable hybrid deep learning framework for early lung nodule classification (C0–C4) integrating DWT, SVD, 3D CNN, and ViT with Cross-Attention fusion.</p>
+                    </div>
+                </div>
+                <div class="p-6 pt-0">
+                    <div class="flex flex-wrap gap-1.5 mb-4">
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">3D CNN</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">ViT</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">Grad-CAM 3D</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded bg-gray-800 text-gray-300 font-mono">Streamlit</span>
+                    </div>
+                    <button onclick="openModal('modal-lightxai')" class="w-full py-2 rounded-lg bg-gray-800 hover:bg-cyan-500 hover:text-white text-gray-300 text-xs font-semibold transition-colors flex items-center justify-center space-x-2">
+                        <span>Project Details</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Skills Section -->
+<section id="skills" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-xs font-mono text-brand-400 tracking-widest uppercase mb-2">Technical Competencies</h2>
+            <p class="text-3xl sm:text-4xl font-bold text-white">Skills & Technologies</p>
+            <div class="w-16 h-1 bg-gradient-to-r from-brand-500 to-accent-purple mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+
+            <!-- Programming Languages & Web Tech -->
+            <div class="glass-card rounded-2xl p-8 space-y-6">
+                <div class="flex items-center space-x-3 pb-4 border-b border-gray-800">
+                    <div class="w-10 h-10 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Programming Languages & Frameworks</h3>
+                        <p class="text-xs text-gray-400">Backend, frontend, and mobile technologies</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2.5">
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-brand-500 transition-colors">
+                        <i class="fa-brands fa-python text-yellow-400"></i> <span>Python</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-brand-500 transition-colors">
+                        <i class="fa-brands fa-js text-yellow-300"></i> <span>JavaScript</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-brand-500 transition-colors">
+                        <i class="fa-brands fa-react text-cyan-400"></i> <span>React.js</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-brand-500 transition-colors">
+                        <i class="fa-brands fa-vuejs text-emerald-400"></i> <span>Vue.js</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-brand-500 transition-colors">
+                        <i class="fa-brands fa-laravel text-red-500"></i> <span>Laravel (MVC)</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-brand-500 transition-colors">
+                        <i class="fa-brands fa-java text-orange-500"></i> <span>Java & Spring Boot</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-brand-500 transition-colors">
+                        <i class="fa-solid fa-code text-blue-400"></i> <span>C++</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-brand-500 transition-colors">
+                        <i class="fa-brands fa-php text-indigo-400"></i> <span>PHP</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-brand-500 transition-colors">
+                        <i class="fa-brands fa-node-js text-emerald-500"></i> <span>Node.js</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-brand-500 transition-colors">
+                        <i class="fa-solid fa-mobile-screen text-cyan-300"></i> <span>Dart & Flutter</span>
+                    </span>
+                    <!-- Additional Skills -->
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-brand-500 transition-colors">
+                        <i class="fa-solid fa-database text-blue-400"></i> <span>SQL</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-brand-500 transition-colors">
+                        <i class="fa-brands fa-git-alt text-red-400"></i> <span>Git/GitHub</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-brand-500 transition-colors">
+                        <i class="fa-solid fa-code text-blue-300"></i> <span>RESTful APIs</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- AI, Computer Vision & Systems -->
+            <div class="glass-card rounded-2xl p-8 space-y-6">
+                <div class="flex items-center space-x-3 pb-4 border-b border-gray-800">
+                    <div class="w-10 h-10 rounded-xl bg-accent-purple/10 text-accent-purple flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">AI, Databases & Enterprise Knowledge</h3>
+                        <p class="text-xs text-gray-400">Research specialization and infrastructure</p>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap gap-2.5">
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-accent-purple transition-colors">
+                        <i class="fa-solid fa-eye text-cyan-400"></i> <span>Computer Vision (CNN, ViT)</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-accent-purple transition-colors">
+                        <i class="fa-solid fa-wand-magic-sparkles text-purple-400"></i> <span>Image Processing (DWT, SVD)</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-accent-purple transition-colors">
+                        <i class="fa-solid fa-network-wired text-emerald-400"></i> <span>RESTful API & Microservices</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-accent-purple transition-colors">
+                        <i class="fa-solid fa-database text-blue-400"></i> <span>SQL & NoSQL</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-accent-purple transition-colors">
+                        <i class="fa-solid fa-cloud text-amber-400"></i> <span>Cloud Computing (AWS/Oracle)</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-accent-purple transition-colors">
+                        <i class="fa-solid fa-cubes text-blue-500"></i> <span>SAP MM & SAP S/4HANA</span>
+                    </span>
+                    <!-- Additional Skills -->
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-accent-purple transition-colors">
+                        <i class="fa-regular fa-lightbulb text-yellow-400"></i> <span>PyTorch & TensorFlow</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-accent-purple transition-colors">
+                        <i class="fa-solid fa-chart-simple text-emerald-400"></i> <span>Data Visualization</span>
+                    </span>
+                    <span class="px-3.5 py-2 rounded-xl bg-gray-900 border border-gray-800 text-sm font-medium text-white flex items-center space-x-2 hover:border-accent-purple transition-colors">
+                        <i class="fa-brands fa-aws text-orange-400"></i> <span>AWS/Azure</span>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Softskills Pills -->
+        <div class="mt-8 glass-card rounded-2xl p-6">
+            <h4 class="text-sm font-bold text-gray-400 uppercase font-mono tracking-wider mb-4 text-center">Soft Skills & Work Character</h4>
+            <div class="flex flex-wrap justify-center gap-3 text-xs sm:text-sm">
+                <span class="px-4 py-2 rounded-full bg-gray-900 text-gray-300 border border-gray-800">💡 Analytical Thinking</span>
+                <span class="px-4 py-2 rounded-full bg-gray-900 text-gray-300 border border-gray-800">🧩 Complex Problem Solving</span>
+                <span class="px-4 py-2 rounded-full bg-gray-900 text-gray-300 border border-gray-800">⚡ Quick Learning</span>
+                <span class="px-4 py-2 rounded-full bg-gray-900 text-gray-300 border border-gray-800">🤝 Teamwork & Collaboration</span>
+                <span class="px-4 py-2 rounded-full bg-gray-900 text-gray-300 border border-gray-800">📢 Strong Communication</span>
+                <span class="px-4 py-2 rounded-full bg-gray-900 text-gray-300 border border-gray-800">🔍 Attention to Detail</span>
+                <span class="px-4 py-2 rounded-full bg-gray-900 text-gray-300 border border-gray-800">🚀 Proactiveness</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Certifications Section -->
+<section id="certifications" class="py-20 relative bg-gray-950/50 border-t border-gray-800/50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-xs font-mono text-brand-400 tracking-widest uppercase mb-2">Licenses & Validation</h2>
+            <p class="text-3xl sm:text-4xl font-bold text-white">Professional Certifications</p>
+            <div class="w-16 h-1 bg-gradient-to-r from-brand-500 to-accent-purple mx-auto mt-4 rounded-full"></div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            <!-- Cert 1 -->
+            <div class="glass-card rounded-2xl p-6 flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0 text-xl">
+                    <i class="fa-solid fa-certificate"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-base">BNSP - Software Engineer</h3>
+                    <p class="text-xs text-brand-400 font-mono mt-0.5">National Competency Certification</p>
+                    <p class="text-xs text-gray-400 mt-2">Indonesian National Professional Certification Agency</p>
+                </div>
+            </div>
+
+            <!-- Cert 2 -->
+            <div class="glass-card rounded-2xl p-6 flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-400 flex items-center justify-center shrink-0 text-xl">
+                    <i class="fa-solid fa-cloud"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-base">Oracle OCI 2024 Generative AI</h3>
+                    <p class="text-xs text-brand-400 font-mono mt-0.5">Certified Professional</p>
+                    <p class="text-xs text-gray-400 mt-2">Oracle Cloud Infrastructure</p>
+                </div>
+            </div>
+
+            <!-- Cert 3 -->
+            <div class="glass-card rounded-2xl p-6 flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center shrink-0 text-xl">
+                    <i class="fa-solid fa-language"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-base">Elskill TOEFL Test</h3>
+                    <p class="text-xs text-brand-400 font-mono mt-0.5">Score: 660</p>
+                    <p class="text-xs text-gray-400 mt-2">Elskill English Course</p>
+                </div>
+            </div>
+
+            <!-- Cert 4 -->
+            <div class="glass-card rounded-2xl p-6 flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-orange-500/10 text-orange-400 flex items-center justify-center shrink-0 text-xl">
+                    <i class="fa-brands fa-aws"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-base">AWS Technical Essentials</h3>
+                    <p class="text-xs text-brand-400 font-mono mt-0.5">Amazon Web Services</p>
+                    <p class="text-xs text-gray-400 mt-2">Cloud Infrastructure Fundamentals</p>
+                </div>
+            </div>
+
+            <!-- Cert 5 -->
+            <div class="glass-card rounded-2xl p-6 flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-blue-600/10 text-blue-400 flex items-center justify-center shrink-0 text-xl">
+                    <i class="fa-brands fa-ibm"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-base">IBM Data Science & AI Fundamentals</h3>
+                    <p class="text-xs text-brand-400 font-mono mt-0.5">IBM Academy</p>
+                    <p class="text-xs text-gray-400 mt-2">Data Science Methodology & Artificial Intelligence</p>
+                </div>
+            </div>
+
+            <!-- Cert 6 -->
+            <div class="glass-card rounded-2xl p-6 flex items-start space-x-4">
+                <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 text-xl">
+                    <i class="fa-solid fa-network-wired"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-white text-base">Cisco Python & JS Essentials 1 & 2</h3>
+                    <p class="text-xs text-brand-400 font-mono mt-0.5">Cisco Networking Academy</p>
+                    <p class="text-xs text-gray-400 mt-2">Core Programming & Algorithms</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Contact & Footer Section -->
+<section id="contact" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+            <!-- Contact Info -->
+            <div class="lg:col-span-5 space-y-8">
+                <div>
+                    <h2 class="text-xs font-mono text-brand-400 tracking-widest uppercase mb-2">Let's Collaborate</h2>
+                    <p class="text-3xl sm:text-4xl font-bold text-white">Contact Me</p>
+                    <p class="text-gray-400 mt-4 leading-relaxed text-sm">
+                        I'm very open to full-time job opportunities, freelance projects, collaborative research, or simply discussing AI and Software Engineering.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="glass-card rounded-2xl p-5 flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-brand-500/10 text-brand-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-gray-400 block">Email</span>
+                                <span class="text-sm font-semibold text-white">skeyshya2021@gmail.com</span>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('skeyshya2021@gmail.com', 'Email copied successfully!')" class="text-gray-400 hover:text-brand-400 p-2" title="Copy Email">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-5 flex items-center justify-between">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xl shrink-0">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div>
+                                <span class="text-xs text-gray-400 block">Phone / WhatsApp</span>
+                                <span class="text-sm font-semibold text-white">081290761677 / 082121268150</span>
+                            </div>
+                        </div>
+                        <button onclick="copyToClipboard('081290761677', 'Phone number copied successfully!')" class="text-gray-400 hover:text-emerald-400 p-2" title="Copy Phone Number">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+
+                    <div class="glass-card rounded-2xl p-5 flex items-center space-x-4">
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-400 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-brands fa-linkedin"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 block">LinkedIn</span>
+                            <a href="https://www.linkedin.com/in/stefaniekeyshya/" target="_blank" rel="noopener" class="text-sm font-semibold text-white hover:text-brand-400 transition-colors">
+                                linkedin.com/in/stefaniekeyshya
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Message Form -->
+            <div class="lg:col-span-7">
+                <div class="glass-card rounded-3xl p-8">
+                    <h3 class="text-xl font-bold text-white mb-6">Send a Direct Message</h3>
+                    <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div>
+                                <label class="block text-xs font-mono text-gray-400 mb-2">FULL NAME</label>
+                                <input type="text" required placeholder="Your Name" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 text-sm transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-mono text-gray-400 mb-2">EMAIL</label>
+                                <input type="email" required placeholder="email@domain.com" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 text-sm transition-colors">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 mb-2">SUBJECT</label>
+                            <input type="text" required placeholder="Topic or Message Title" class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 text-sm transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-mono text-gray-400 mb-2">MESSAGE</label>
+                            <textarea rows="4" required placeholder="Write your message here..." class="w-full bg-gray-900 border border-gray-800 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:border-brand-500 text-sm transition-colors"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold transition-all shadow-lg shadow-brand-500/25 flex items-center justify-center space-x-2">
+                            <i class="fa-solid fa-paper-plane"></i>
+                            <span>Send Message</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer Bottom -->
+        <div class="mt-20 pt-8 border-t border-gray-800/80 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500">
+            <p>&copy; 2026 Stefanie Keyshya Ardadi. All rights reserved.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Modals for Projects -->
+<!-- Modal 1: Lung Cancer -->
+<div id="modal-lung" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="glass-card bg-cardBg rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative border border-gray-700 max-h-[90vh] overflow-y-auto">
+        <button onclick="closeModal('modal-lung')" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="flex items-center space-x-3 mb-4">
+            <span class="px-3 py-1 rounded-full bg-brand-500/20 text-brand-400 text-xs font-mono">Research Assistant</span>
+            <span class="text-xs text-gray-400 font-mono">Dec 2025 - Jan 2026</span>
+        </div>
+        <h3 class="text-2xl font-bold text-white mb-3">Lung Cancer Detection System (Computer Vision)</h3>
+        <p class="text-sm text-gray-300 leading-relaxed mb-4">
+            An advanced research project for automated medical image classification in lung cancer cases. Combines Convolutional Neural Network (CNN) and Vision Transformer (ViT) architectures to obtain contextual and local feature extraction performance simultaneously.
+        </p>
+        <h4 class="text-xs font-bold text-brand-400 font-mono uppercase mb-2">Key Features & Improvements:</h4>
+        <ul class="list-disc list-inside text-xs text-gray-300 space-y-1.5 mb-6">
+            <li>Integrated a DWT (Discrete Wavelet Transform) + SVD (Singular Value Decomposition) pipeline that improved accuracy to 80%.</li>
+            <li>Two-stage classification: Normal, Benign, and Malignant images.</li>
+            <li>Interactive Desktop GUI application for image upload, preprocessing, and confidence score visualization.</li>
+            <li>Migrated algorithms from a MATLAB environment to Python for production scalability.</li>
+        </ul>
+        <div class="flex justify-end pt-4 border-t border-gray-800">
+            <button onclick="closeModal('modal-lung')" class="px-5 py-2 rounded-xl bg-gray-800 text-white text-xs font-semibold hover:bg-gray-700">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 2: Flower Classification -->
+<div id="modal-flower" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="glass-card bg-cardBg rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative border border-gray-700 max-h-[90vh] overflow-y-auto">
+        <button onclick="closeModal('modal-flower')" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="flex items-center space-x-3 mb-4">
+            <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-mono">Journal Publication</span>
+            <span class="text-xs text-gray-400 font-mono">Oct 2025 - Dec 2025</span>
+        </div>
+        <h3 class="text-2xl font-bold text-white mb-3">Flower Species Classification using CNN and DWT</h3>
+        <p class="text-sm text-gray-300 leading-relaxed mb-4">
+            A comparative performance study between standard CNN and CNN enhanced with Discrete Wavelet Transform (DWT) for classifying 5 flower species across more than 3,000 image samples.
+        </p>
+        <h4 class="text-xs font-bold text-emerald-400 font-mono uppercase mb-2">Research Results:</h4>
+        <ul class="list-disc list-inside text-xs text-gray-300 space-y-1.5 mb-6">
+            <li>Improved model accuracy from 81.29% (baseline CNN) to 82.73% (CNN + DWT).</li>
+            <li>Implemented Grad-CAM technique to visualize the image regions the model focused on.</li>
+            <li>Published a scientific article in a reputable peer-reviewed national journal.</li>
+        </ul>
+        <div class="flex justify-end pt-4 border-t border-gray-800">
+            <button onclick="closeModal('modal-flower')" class="px-5 py-2 rounded-xl bg-gray-800 text-white text-xs font-semibold hover:bg-gray-700">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 3: E-Commerce AI -->
+<div id="modal-ecommerce" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="glass-card bg-cardBg rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative border border-gray-700 max-h-[90vh] overflow-y-auto">
+        <button onclick="closeModal('modal-ecommerce')" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="flex items-center space-x-3 mb-4">
+            <span class="px-3 py-1 rounded-full bg-amber-500/20 text-amber-400 text-xs font-mono">Bronze Medal Winner</span>
+            <span class="text-xs text-gray-400 font-mono">July 2025</span>
+        </div>
+        <h3 class="text-2xl font-bold text-white mb-3">AI-Powered E-Commerce with DeepSeek API</h3>
+        <p class="text-sm text-gray-300 leading-relaxed mb-4">
+            An innovative e-commerce platform solution combining artificial intelligence for multilingual product recommendations and an interactive fashion assistant agent feature.
+        </p>
+        <h4 class="text-xs font-bold text-amber-400 font-mono uppercase mb-2">Solution Highlights:</h4>
+        <ul class="list-disc list-inside text-xs text-gray-300 space-y-1.5 mb-6">
+            <li>Integrated the DeepSeek LLM API for real-time styling and outfit-matching consultations.</li>
+            <li>Fast frontend design based on Bootstrap and a secure backend transaction architecture.</li>
+            <li>Won the Bronze Medal award in the National AI Innovation Competition.</li>
+        </ul>
+        <div class="flex justify-end pt-4 border-t border-gray-800">
+            <button onclick="closeModal('modal-ecommerce')" class="px-5 py-2 rounded-xl bg-gray-800 text-white text-xs font-semibold hover:bg-gray-700">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 4: Inventory -->
+<div id="modal-inventory" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="glass-card bg-cardBg rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative border border-gray-700 max-h-[90vh] overflow-y-auto">
+        <button onclick="closeModal('modal-inventory')" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="flex items-center space-x-3 mb-4">
+            <span class="px-3 py-1 rounded-full bg-purple-500/20 text-purple-400 text-xs font-mono">Industry Internship</span>
+            <span class="text-xs text-gray-400 font-mono">Mar 2025 - Jun 2025</span>
+        </div>
+        <h3 class="text-2xl font-bold text-white mb-3">Inventory Management System - CV Prima Bella</h3>
+        <p class="text-sm text-gray-300 leading-relaxed mb-4">
+            An enterprise operational information system for digitizing goods inventory, managing supplier supply chains, and automating purchase order generation and periodic reporting.
+        </p>
+        <h4 class="text-xs font-bold text-purple-400 font-mono uppercase mb-2">Impact & Contributions:</h4>
+        <ul class="list-disc list-inside text-xs text-gray-300 space-y-1.5 mb-6">
+            <li>Eliminated manual stock recording and reduced the data input error rate by up to 90%.</li>
+            <li>Supplier management module, order history, and automatic out-of-stock alerts.</li>
+            <li>Developed the company profile interface to strengthen the company's digital branding.</li>
+        </ul>
+        <div class="flex justify-end pt-4 border-t border-gray-800">
+            <button onclick="closeModal('modal-inventory')" class="px-5 py-2 rounded-xl bg-gray-800 text-white text-xs font-semibold hover:bg-gray-700">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 5: LightXAI-WaveNet -->
+<div id="modal-lightxai" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+    <div class="glass-card bg-cardBg rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative border border-gray-700 max-h-[90vh] overflow-y-auto">
+        <button onclick="closeModal('modal-lightxai')" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="flex items-center space-x-3 mb-4">
+            <span class="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-400 text-xs font-mono">Faculty Research</span>
+            <span class="text-xs text-gray-400 font-mono">Aug 2026 - Present</span>
+        </div>
+        <h3 class="text-2xl font-bold text-white mb-3">LightXAI-WaveNet: Explainable Hybrid Deep Learning Framework</h3>
+        <p class="text-sm text-gray-300 leading-relaxed mb-4">
+            Developed LightXAI-WaveNet, an explainable hybrid deep learning framework for early lung nodule classification, as part of a faculty-initiated research project supervised by Dr. Misni, Ph.D. (Kyushu University, Japan). The system integrates Discrete Wavelet Transform (DWT), Adaptive Singular Value Decomposition (SVD), 3D Convolutional Neural Network (CNN), and Vision Transformer (ViT) with Cross-Attention fusion to classify lung nodules into 5 classes (C0–C4): Normal, Tiny Benign, Tiny Malignant, Large Benign, and Large Malignant.
+        </p>
+        <h4 class="text-xs font-bold text-cyan-400 font-mono uppercase mb-2">Key Contributions:</h4>
+        <ul class="list-disc list-inside text-xs text-gray-300 space-y-1.5 mb-6">
+            <li>Designed and implemented hybrid pipeline using DWT + SVD for multi-resolution feature extraction and dimensionality reduction.</li>
+            <li>Developed 3D CNN + Vision Transformer (ViT) with Cross-Attention fusion for local-global feature learning.</li>
+            <li>Achieved Best AUC 0.8068 and Test Macro AUC 0.7968 on LIDC-IDRI dataset (887 samples).</li>
+            <li>Conducted Ablation Study (M1–M5) proving DWT (+2.89%) and Cross-Attention (+45.8%) effectiveness.</li>
+            <li>Implemented Explainable AI (XAI) using Grad-CAM 3D for visual interpretation of model focus areas.</li>
+            <li>Developed IoU (Intersection over Union) evaluation module to compare model predictions with radiologist annotations.</li>
+            <li>Built an interactive Streamlit GUI with real-time detection, Grad-CAM visualization, 8 subband 3D-DWT, and IoU analysis.</li>
+            <li>Deployed GUI on Streamlit Cloud for accessible demonstration.</li>
+            <li>Integrated histogram-based intensity analysis and ensemble voting for robust decision support.</li>
+        </ul>
+        <!-- Link to GUI -->
+        <div class="mt-4 p-3 bg-gray-800/50 rounded-xl border border-gray-700 flex items-center justify-between">
+            <span class="text-xs text-gray-300 font-mono"><i class="fa-solid fa-rocket text-cyan-400 mr-2"></i>Interactive GUI:</span>
+            <a href="https://lightxai-wavenet-gui.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-xs text-cyan-400 hover:text-white font-semibold transition-colors flex items-center gap-1">
+                lightxai-wavenet-gui.streamlit.app
+                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </a>
+        </div>
+        <div class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-gray-800">
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Python</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">PyTorch</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">3D CNN</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Vision Transformer</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Grad-CAM 3D</span>
+            <span class="px-2.5 py-1 rounded bg-gray-800 text-xs text-gray-300 font-mono">Streamlit</span>
+        </div>
+        <div class="flex justify-end pt-4 border-t border-gray-800 mt-4">
+            <button onclick="closeModal('modal-lightxai')" class="px-5 py-2 rounded-xl bg-gray-800 text-white text-xs font-semibold hover:bg-gray-700">Close</button>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts -->
+<script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+        });
+    });
+
+    // Project Filter Functionality
+    const filterBtns = document.querySelectorAll('.project-filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active styling from all buttons
+            filterBtns.forEach(b => {
+                b.classList.remove('bg-brand-500', 'text-white');
+                b.classList.add('glass-card', 'text-gray-400');
+            });
+
+            // Add active styling to clicked button
+            btn.classList.add('bg-brand-500', 'text-white');
+            btn.classList.remove('glass-card', 'text-gray-400');
+
+            const filter = btn.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Modal Functions
+    function openModal(id) {
+        document.getElementById(id).classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal(id) {
+        document.getElementById(id).classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Copy to Clipboard with Toast
+    function copyToClipboard(text, message) {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(message);
+            });
+        } else {
+            // Fallback execCommand
+            const textArea = document.createElement("textarea");
+            textArea.value = text;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            showToast(message);
+        }
+    }
+
+    // Toast Notification
+    function showToast(message) {
+        const toast = document.getElementById('toast');
+        const toastMsg = document.getElementById('toast-message');
+        toastMsg.innerText = message;
+        toast.classList.remove('translate-y-20', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+
+        setTimeout(() => {
+            toast.classList.add('translate-y-20', 'opacity-0');
+            toast.classList.remove('translate-y-0', 'opacity-100');
+        }, 3000);
+    }
+
+    // Form Submit Simulation
+    function handleFormSubmit(event) {
+        event.preventDefault();
+        showToast('Your message was sent successfully! I will respond soon.');
+        document.getElementById('contact-form').reset();
+    }
+
+</script>
+</body>
+</html>

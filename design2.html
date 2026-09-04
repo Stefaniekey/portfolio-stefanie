@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stefanie Keyshya Ardadi — Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,450;0,9..144,600;0,9..144,700;1,9..144,450&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Fraunces"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        paper: '#F6F4EE',
+                        card: '#FFFFFF',
+                        ink: '#191B22',
+                        soft: '#5B5F6B',
+                        line: '#DEDACD',
+                        indigo: { DEFAULT: '#243A8F', dark: '#172a6b', light: '#EEF0FA' },
+                        gold: { DEFAULT: '#B8862F', light: '#F7EFDD' },
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        html { scroll-behavior: smooth; }
+        body { background-color: #F6F4EE; color: #191B22; }
+        ::selection { background: #243A8F; color: #F6F4EE; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #F6F4EE; }
+        ::-webkit-scrollbar-thumb { background: #DEDACD; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #243A8F; }
+
+        .rule { border-color: #DEDACD; }
+        .card-flat {
+            background: #FFFFFF;
+            border: 1px solid #DEDACD;
+        }
+        .num {
+            font-variant-numeric: tabular-nums;
+            font-feature-settings: "tnum";
+        }
+        .tag {
+            border: 1px solid #DEDACD;
+            color: #5B5F6B;
+        }
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+            outline: 2px solid #243A8F;
+            outline-offset: 2px;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            * { animation: none !important; transition: none !important; }
+        }
+        .fade-in { animation: fadeIn 0.7s ease both; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="font-sans antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-paper/95 backdrop-blur-sm border-b rule" id="navbar">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8 h-[76px] flex items-center justify-between">
+            <a href="#hero" class="flex items-baseline space-x-2">
+                <span class="font-serif text-xl font-semibold text-ink">Stefanie</span>
+                <span class="font-serif text-xl italic text-soft hidden sm:inline">Keyshya</span>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-9 text-[15px] text-soft">
+                <a href="#about" class="hover:text-ink transition-colors">About</a>
+                <a href="#experience" class="hover:text-ink transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-ink transition-colors">Projects</a>
+                <a href="#skills" class="hover:text-ink transition-colors">Skills</a>
+                <a href="#certifications" class="hover:text-ink transition-colors">Certifications</a>
+                <a href="#contact" class="px-5 py-2 rounded-full bg-indigo hover:bg-indigo-dark text-white font-medium transition-colors">
+                    Get in touch
+                </a>
+            </nav>
+
+            <button id="mobile-menu-btn" class="md:hidden text-ink p-2" aria-label="Toggle Navigation">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-paper border-b rule px-5 pt-2 pb-6 space-y-1">
+            <a href="#about" class="block py-2.5 text-soft hover:text-ink mobile-nav-link">About</a>
+            <a href="#experience" class="block py-2.5 text-soft hover:text-ink mobile-nav-link">Experience</a>
+            <a href="#projects" class="block py-2.5 text-soft hover:text-ink mobile-nav-link">Projects</a>
+            <a href="#skills" class="block py-2.5 text-soft hover:text-ink mobile-nav-link">Skills</a>
+            <a href="#certifications" class="block py-2.5 text-soft hover:text-ink mobile-nav-link">Certifications</a>
+            <a href="#contact" class="block mt-2 py-2.5 text-center rounded-full bg-indigo text-white font-medium mobile-nav-link">Get in touch</a>
+        </div>
+    </header>
+
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-ink text-paper px-5 py-3 rounded-xl shadow-xl flex items-center space-x-3">
+        <i class="fa-solid fa-circle-check text-gold"></i>
+        <span id="toast-message" class="font-medium text-sm">Message sent!</span>
+    </div>
+
+    <!-- Hero -->
+    <section id="hero" class="pt-[130px] pb-20 relative overflow-hidden">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-14 items-start">
+
+                <div class="lg:col-span-7 fade-in">
+                    <div class="inline-flex items-center space-x-2 text-sm text-indigo mb-6">
+                        <span class="w-1.5 h-1.5 rounded-full bg-indigo"></span>
+                        <span>Open to opportunities in AI &amp; Software Engineering</span>
+                    </div>
+
+                    <h1 class="font-serif text-[2.75rem] sm:text-6xl leading-[1.05] text-ink font-semibold">
+                        Hi, I'm Stefanie Keyshya Ardadi.
+                        <span class="block text-soft font-normal italic mt-1">A fresh graduate who builds things machines can see.</span>
+                    </h1>
+
+                    <p class="mt-7 text-lg text-soft leading-relaxed max-w-xl">
+                        Fresh graduate in Informatics Engineering from Universitas Mercu Buana (GPA 3.86). My work sits at the intersection of computer vision, applied AI, and full-stack development — from medical image classification to AI-powered web platforms.
+                    </p>
+
+                    <div class="mt-9 grid grid-cols-3 max-w-md border-y rule py-5">
+                        <div class="border-r rule pr-4">
+                            <span class="block font-serif text-2xl text-ink num">3.86</span>
+                            <span class="text-xs text-soft">GPA / 4.00</span>
+                        </div>
+                        <div class="border-r rule px-4">
+                            <span class="block font-serif text-2xl text-ink num">4+</span>
+                            <span class="text-xs text-soft">Projects &amp; research</span>
+                        </div>
+                        <div class="pl-4">
+                            <span class="block font-serif text-2xl text-ink num">45+</span>
+                            <span class="text-xs text-soft">Certificates</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-wrap items-center gap-4 mt-9">
+                        <a href="#projects" class="px-6 py-3 rounded-full bg-ink hover:bg-indigo-dark text-white font-medium transition-colors">
+                            View my work
+                        </a>
+                        <a href="https://www.linkedin.com/in/stefaniekeyshya/" target="_blank" rel="noopener" class="px-6 py-3 rounded-full border rule hover:border-indigo text-ink font-medium transition-colors flex items-center space-x-2">
+                            <i class="fa-brands fa-linkedin text-indigo"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 fade-in" style="animation-delay:.1s">
+                    <div class="card-flat rounded-2xl p-5 max-w-sm mx-auto lg:ml-auto lg:mr-0">
+                        <div class="relative group rounded-xl overflow-hidden bg-line aspect-[4/5]">
+                            <img id="profile-img"
+                                 src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"
+                                 alt="Photo of Stefanie Keyshya Ardadi"
+                                 class="w-full h-full object-cover object-top"
+                                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=600&q=80';">
+                            <button onclick="openModal('modal-change-photo')"
+                                    class="absolute inset-0 bg-ink/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white text-xs font-medium space-y-1"
+                                    title="Change profile photo">
+                                <i class="fa-solid fa-camera text-lg"></i>
+                                <span>Change photo</span>
+                            </button>
+                        </div>
+
+                        <div class="flex items-center justify-between mt-4">
+                            <div>
+                                <h2 class="font-serif text-lg text-ink leading-tight">Stefanie Keyshya Ardadi</h2>
+                                <p class="text-xs text-soft mt-0.5">Informatics Engineering, fresh graduate</p>
+                            </div>
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 shrink-0" title="Available for work"></span>
+                        </div>
+
+                        <button onclick="openModal('modal-change-photo')" class="mt-3 text-[11px] text-soft hover:text-indigo transition-colors flex items-center space-x-1.5">
+                            <i class="fa-solid fa-image"></i>
+                            <span>Replace this photo</span>
+                        </button>
+
+                        <div class="mt-4 pt-4 border-t rule space-y-2 text-sm text-soft">
+                            <div class="flex items-center space-x-2.5">
+                                <i class="fa-solid fa-location-dot w-4 text-indigo"></i>
+                                <span>Tangerang, Indonesia</span>
+                            </div>
+                            <div class="flex items-center space-x-2.5">
+                                <i class="fa-solid fa-award w-4 text-indigo"></i>
+                                <span>BNSP certified software engineer</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="py-20 border-t rule">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <div class="lg:col-span-4">
+                    <h2 class="font-serif text-3xl sm:text-4xl text-ink">About</h2>
+                    <p class="text-soft mt-3 text-sm leading-relaxed">A short summary of where I've been and what I'm looking for next.</p>
+                </div>
+
+                <div class="lg:col-span-8 space-y-10">
+                    <div>
+                        <p class="text-ink leading-relaxed text-lg">
+                            I recently graduated in Informatics Engineering from Universitas Mercu Buana, with a strong interest in artificial intelligence, computer vision, and web &amp; mobile application development.
+                        </p>
+                        <p class="text-soft leading-relaxed mt-4">
+                            I've gained hands-on experience through academic research on CNN- and Vision-Transformer-based medical classification systems, built an AI-powered e-commerce platform using the DeepSeek API, and completed an industry internship as a web developer on an enterprise inventory management system.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-8 border-t rule">
+                        <div>
+                            <span class="text-xs text-soft block mb-1">Education</span>
+                            <span class="text-ink font-medium block">B.Eng. Informatics Engineering</span>
+                            <span class="text-sm text-soft">Universitas Mercu Buana, 2022–2026</span>
+                        </div>
+                        <div>
+                            <span class="text-xs text-soft block mb-1">Focus areas</span>
+                            <span class="text-ink font-medium block">Computer Vision &amp; Web Development</span>
+                            <span class="text-sm text-soft">BNSP &amp; Oracle certified</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-10 pt-8 border-t rule">
+                        <div>
+                            <h3 class="text-ink font-medium mb-4">Languages</h3>
+                            <div class="space-y-3.5">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1.5">
+                                        <span class="text-ink">Indonesian</span>
+                                        <span class="text-soft text-xs">Native</span>
+                                    </div>
+                                    <div class="w-full bg-line h-1 rounded-full"><div class="bg-indigo h-1 rounded-full w-full"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1.5">
+                                        <span class="text-ink">English</span>
+                                        <span class="text-soft text-xs">Intermediate — TOEFL 660</span>
+                                    </div>
+                                    <div class="w-full bg-line h-1 rounded-full"><div class="bg-indigo h-1 rounded-full w-[85%]"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1.5">
+                                        <span class="text-ink">Mandarin</span>
+                                        <span class="text-soft text-xs">Beginner</span>
+                                    </div>
+                                    <div class="w-full bg-line h-1 rounded-full"><div class="bg-indigo h-1 rounded-full w-[30%]"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="text-ink font-medium mb-4">Leadership</h3>
+                            <div class="border-l-2 border-gold pl-4">
+                                <h4 class="text-ink font-medium text-sm">Student Executive Board (BEM)</h4>
+                                <p class="text-xs text-soft mt-0.5">Faculty of Computer Science · Sep 2024 – Sep 2025</p>
+                                <p class="text-sm text-soft mt-2 leading-relaxed">Student Development Division. Organized skills training, leadership workshops, and cross-division collaborative activities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="py-20 border-t rule">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="mb-14">
+                <h2 class="font-serif text-3xl sm:text-4xl text-ink">Experience &amp; research</h2>
+                <p class="text-soft mt-3 text-sm max-w-md">Four roles, in order, from most to least recent.</p>
+            </div>
+
+            <div class="space-y-0">
+
+                <!-- Item 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8 border-t rule">
+                    <div class="md:col-span-2">
+                        <span class="text-sm text-soft num">01</span>
+                        <span class="block text-sm text-indigo mt-1">Dec 2025 – Jan 2026</span>
+                    </div>
+                    <div class="md:col-span-10">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+                            <h3 class="font-serif text-xl text-ink">Research Assistant — Lung Cancer Detection System</h3>
+                            <span class="tag text-xs px-3 py-1 rounded-full whitespace-nowrap">Computer Vision · Deep Learning</span>
+                        </div>
+                        <p class="text-sm text-soft mb-4">Universitas Mercu Buana</p>
+                        <ul class="space-y-2 text-sm text-soft list-disc list-outside ml-4">
+                            <li>Built an AI-based lung cancer detection system in Python using CNN and Vision Transformer (ViT) architectures for multi-class medical image classification.</li>
+                            <li>Designed a hybrid feature-extraction pipeline (DWT, SVD) that improved model accuracy to 80%.</li>
+                            <li>Built and evaluated deep learning models to classify lung scans as Normal, Benign, or Malignant.</li>
+                            <li>Designed an interactive GUI application for image processing and automated visualization.</li>
+                            <li>Applied ensemble learning and confidence scoring, and migrated algorithms from MATLAB to Python.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mt-5">
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">Python</span>
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">CNN</span>
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">Vision Transformer (ViT)</span>
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">DWT &amp; SVD</span>
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">PyQt / GUI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8 border-t rule">
+                    <div class="md:col-span-2">
+                        <span class="text-sm text-soft num">02</span>
+                        <span class="block text-sm text-indigo mt-1">Oct 2025 – Dec 2025</span>
+                    </div>
+                    <div class="md:col-span-10">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+                            <h3 class="font-serif text-xl text-ink">Lead Researcher — Flower Species Classification (CNN + DWT)</h3>
+                            <span class="tag text-xs px-3 py-1 rounded-full whitespace-nowrap">Peer-reviewed publication</span>
+                        </div>
+                        <p class="text-sm text-soft mb-4">Universitas Mercu Buana</p>
+                        <ul class="space-y-2 text-sm text-soft list-disc list-outside ml-4">
+                            <li>Developed an end-to-end image classification system using CNN + Discrete Wavelet Transform (DWT) across 5 classes and 3,000+ images.</li>
+                            <li>Improved model accuracy from 81.29% to 82.73% through wavelet-based preprocessing.</li>
+                            <li>Applied Grad-CAM for model explainability and feature visualization.</li>
+                            <li>Built an interactive GUI for the classification workflow and published the findings in a peer-reviewed journal.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mt-5">
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">Image Processing</span>
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">Grad-CAM</span>
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">DWT</span>
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">Peer-reviewed journal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8 border-t rule">
+                    <div class="md:col-span-2">
+                        <span class="text-sm text-soft num">03</span>
+                        <span class="block text-sm text-indigo mt-1">Jul 2025</span>
+                    </div>
+                    <div class="md:col-span-10">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+                            <h3 class="font-serif text-xl text-ink">National Competition — AI-Powered E-Commerce</h3>
+                            <span class="tag text-xs px-3 py-1 rounded-full whitespace-nowrap text-gold border-gold/40">Bronze medal</span>
+                        </div>
+                        <p class="text-sm text-soft mb-4">Universitas Mercu Buana</p>
+                        <ul class="space-y-2 text-sm text-soft list-disc list-outside ml-4">
+                            <li>Built a smart e-commerce platform with a multilingual recommendation system.</li>
+                            <li>Led integration of the DeepSeek API for automated, personalized fashion consultation.</li>
+                            <li>Implemented the frontend (Bootstrap) and backend logic for smart product search and fast checkout.</li>
+                            <li>Won a Bronze Medal for the AI-driven solution.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mt-5">
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">DeepSeek API</span>
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">LLM Integration</span>
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">Bootstrap</span>
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">Recommender System</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8 border-t border-b rule">
+                    <div class="md:col-span-2">
+                        <span class="text-sm text-soft num">04</span>
+                        <span class="block text-sm text-indigo mt-1">Mar 2025 – Jun 2025</span>
+                    </div>
+                    <div class="md:col-span-10">
+                        <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+                            <h3 class="font-serif text-xl text-ink">Web Developer Intern</h3>
+                            <span class="tag text-xs px-3 py-1 rounded-full whitespace-nowrap">Industry internship</span>
+                        </div>
+                        <p class="text-sm text-soft mb-4">CV Prima Bella Panen Rejeki</p>
+                        <ul class="space-y-2 text-sm text-soft list-disc list-outside ml-4">
+                            <li>Built an inventory management system to digitize and automate internal business processes.</li>
+                            <li>Designed core features: supplier management, real-time stock tracking, purchase orders, and dynamic reporting.</li>
+                            <li>Improved inventory data accuracy, operational efficiency, and stock visibility for the company.</li>
+                            <li>Contributed to the frontend of the company's public-facing company profile website.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mt-5">
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">PHP / Laravel</span>
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">SQL Database</span>
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">REST API</span>
+                            <span class="tag text-xs px-2.5 py-1 rounded-md">Company Profile</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-20 border-t rule">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="flex flex-wrap items-end justify-between gap-6 mb-12">
+                <div>
+                    <h2 class="font-serif text-3xl sm:text-4xl text-ink">Projects &amp; research</h2>
+                    <p class="text-soft mt-3 text-sm max-w-md">A selection of the work above, laid out for a closer look.</p>
+                </div>
+                <div class="flex flex-wrap gap-2">
+                    <button class="project-filter-btn px-4 py-2 rounded-full bg-ink text-white text-sm transition-colors" data-filter="all">All</button>
+                    <button class="project-filter-btn px-4 py-2 rounded-full border rule text-soft hover:text-ink text-sm transition-colors" data-filter="ai">AI &amp; Computer Vision</button>
+                    <button class="project-filter-btn px-4 py-2 rounded-full border rule text-soft hover:text-ink text-sm transition-colors" data-filter="web">Web Development</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- Card 1 -->
+                <div class="project-card card-flat rounded-2xl overflow-hidden flex flex-col justify-between" data-category="ai">
+                    <div>
+                        <div class="h-40 bg-indigo-light flex items-center justify-center border-b rule">
+                            <i class="fa-solid fa-lungs-virus text-5xl text-indigo/70"></i>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs text-indigo">Deep learning</span>
+                            <h3 class="font-serif text-lg text-ink mt-1 mb-2">Lung Cancer Detection System</h3>
+                            <p class="text-sm text-soft leading-relaxed">Multi-class medical image classifier built on CNN and Vision Transformer (ViT), with a hybrid DWT + SVD feature-extraction pipeline that lifted accuracy to 80%.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="tag text-[10px] px-2 py-0.5 rounded">Python</span>
+                            <span class="tag text-[10px] px-2 py-0.5 rounded">Vision Transformer</span>
+                            <span class="tag text-[10px] px-2 py-0.5 rounded">DWT-SVD</span>
+                        </div>
+                        <button onclick="openModal('modal-lung')" class="w-full py-2.5 rounded-lg border rule hover:border-indigo hover:text-indigo text-ink text-sm font-medium transition-colors">
+                            Read more
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="project-card card-flat rounded-2xl overflow-hidden flex flex-col justify-between" data-category="ai">
+                    <div>
+                        <div class="h-40 bg-gold-light flex items-center justify-center border-b rule">
+                            <i class="fa-solid fa-spa text-5xl text-gold/70"></i>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs text-gold">Journal publication</span>
+                            <h3 class="font-serif text-lg text-ink mt-1 mb-2">Flower Classification (CNN + DWT)</h3>
+                            <p class="text-sm text-soft leading-relaxed">Image classification research across 3,000+ images and 5 flower species, using wavelet preprocessing and Grad-CAM for model transparency.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="tag text-[10px] px-2 py-0.5 rounded">CNN</span>
+                            <span class="tag text-[10px] px-2 py-0.5 rounded">Grad-CAM</span>
+                            <span class="tag text-[10px] px-2 py-0.5 rounded">GUI App</span>
+                        </div>
+                        <button onclick="openModal('modal-flower')" class="w-full py-2.5 rounded-lg border rule hover:border-indigo hover:text-indigo text-ink text-sm font-medium transition-colors">
+                            Read more
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="project-card card-flat rounded-2xl overflow-hidden flex flex-col justify-between" data-category="web">
+                    <div>
+                        <div class="h-40 bg-indigo-light flex items-center justify-center border-b rule">
+                            <i class="fa-solid fa-cart-shopping text-5xl text-indigo/70"></i>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs text-gold">Bronze medal</span>
+                            <h3 class="font-serif text-lg text-ink mt-1 mb-2">AI E-Commerce &amp; Recommendation</h3>
+                            <p class="text-sm text-soft leading-relaxed">E-commerce platform with a multilingual recommendation system and DeepSeek API integration for personalized fashion consultation.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="tag text-[10px] px-2 py-0.5 rounded">DeepSeek API</span>
+                            <span class="tag text-[10px] px-2 py-0.5 rounded">Bootstrap</span>
+                            <span class="tag text-[10px] px-2 py-0.5 rounded">AI Search</span>
+                        </div>
+                        <button onclick="openModal('modal-ecommerce')" class="w-full py-2.5 rounded-lg border rule hover:border-indigo hover:text-indigo text-ink text-sm font-medium transition-colors">
+                            Read more
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="project-card card-flat rounded-2xl overflow-hidden flex flex-col justify-between" data-category="web">
+                    <div>
+                        <div class="h-40 bg-gold-light flex items-center justify-center border-b rule">
+                            <i class="fa-solid fa-boxes-stacked text-5xl text-gold/70"></i>
+                        </div>
+                        <div class="p-6">
+                            <span class="text-xs text-indigo">Internship</span>
+                            <h3 class="font-serif text-lg text-ink mt-1 mb-2">Enterprise Inventory Management</h3>
+                            <p class="text-sm text-soft leading-relaxed">Stock and inventory system for CV Prima Bella Panen Rejeki, with supplier tracking, purchase orders, and automated reporting.</p>
+                        </div>
+                    </div>
+                    <div class="px-6 pb-6">
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="tag text-[10px] px-2 py-0.5 rounded">Laravel / PHP</span>
+                            <span class="tag text-[10px] px-2 py-0.5 rounded">SQL Database</span>
+                            <span class="tag text-[10px] px-2 py-0.5 rounded">Dashboard</span>
+                        </div>
+                        <button onclick="openModal('modal-inventory')" class="w-full py-2.5 rounded-lg border rule hover:border-indigo hover:text-indigo text-ink text-sm font-medium transition-colors">
+                            Read more
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-20 border-t rule">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="mb-14">
+                <h2 class="font-serif text-3xl sm:text-4xl text-ink">Skills &amp; technology</h2>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-10">
+
+                <div>
+                    <h3 class="text-ink font-medium mb-1">Languages &amp; frameworks</h3>
+                    <p class="text-sm text-soft mb-5">Backend, frontend, and mobile technologies</p>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-brands fa-python text-yellow-500"></i><span>Python</span></span>
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-brands fa-js text-yellow-500"></i><span>JavaScript</span></span>
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-brands fa-react text-indigo"></i><span>React.js</span></span>
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-brands fa-vuejs text-emerald-600"></i><span>Vue.js</span></span>
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-brands fa-laravel text-red-600"></i><span>Laravel (MVC)</span></span>
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-brands fa-java text-orange-600"></i><span>Java &amp; Spring Boot</span></span>
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-solid fa-code text-indigo"></i><span>C++</span></span>
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-brands fa-php text-indigo"></i><span>PHP</span></span>
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-brands fa-node-js text-emerald-600"></i><span>Node.js</span></span>
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-solid fa-mobile-screen text-indigo"></i><span>Dart &amp; Flutter</span></span>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-ink font-medium mb-1">AI, data &amp; infrastructure</h3>
+                    <p class="text-sm text-soft mb-5">Research specialization and enterprise tooling</p>
+                    <div class="flex flex-wrap gap-2.5">
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-solid fa-eye text-indigo"></i><span>Computer Vision (CNN, ViT)</span></span>
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-solid fa-wand-magic-sparkles text-gold"></i><span>Image Processing (DWT, SVD)</span></span>
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-solid fa-network-wired text-emerald-600"></i><span>RESTful API &amp; Microservices</span></span>
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-solid fa-database text-indigo"></i><span>SQL &amp; NoSQL</span></span>
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-solid fa-cloud text-gold"></i><span>Cloud Computing (AWS/Oracle)</span></span>
+                        <span class="tag px-3.5 py-2 rounded-lg text-sm text-ink flex items-center space-x-2"><i class="fa-solid fa-cubes text-indigo"></i><span>SAP MM &amp; SAP S/4HANA</span></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 pt-10 border-t rule">
+                <h4 class="text-ink font-medium mb-4">Working style</h4>
+                <div class="flex flex-wrap gap-2.5 text-sm">
+                    <span class="tag px-4 py-2 rounded-full text-soft">Analytical thinking</span>
+                    <span class="tag px-4 py-2 rounded-full text-soft">Complex problem solving</span>
+                    <span class="tag px-4 py-2 rounded-full text-soft">Quick learning</span>
+                    <span class="tag px-4 py-2 rounded-full text-soft">Teamwork &amp; collaboration</span>
+                    <span class="tag px-4 py-2 rounded-full text-soft">Clear communication</span>
+                    <span class="tag px-4 py-2 rounded-full text-soft">Attention to detail</span>
+                    <span class="tag px-4 py-2 rounded-full text-soft">Proactiveness</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications" class="py-20 border-t rule">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="mb-14">
+                <h2 class="font-serif text-3xl sm:text-4xl text-ink">Certifications</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-line border rule rounded-2xl overflow-hidden">
+
+                <div class="bg-card p-6 flex items-start space-x-4">
+                    <i class="fa-solid fa-certificate text-gold text-lg mt-1"></i>
+                    <div>
+                        <h3 class="font-medium text-ink text-sm">BNSP — Software Engineer</h3>
+                        <p class="text-xs text-soft mt-1">National competency certification</p>
+                        <p class="text-xs text-soft mt-2">Badan Nasional Sertifikasi Profesi, Indonesia</p>
+                    </div>
+                </div>
+
+                <div class="bg-card p-6 flex items-start space-x-4">
+                    <i class="fa-solid fa-cloud text-indigo text-lg mt-1"></i>
+                    <div>
+                        <h3 class="font-medium text-ink text-sm">Oracle OCI 2024 Generative AI</h3>
+                        <p class="text-xs text-soft mt-1">Certified Professional</p>
+                        <p class="text-xs text-soft mt-2">Oracle Cloud Infrastructure</p>
+                    </div>
+                </div>
+
+                <div class="bg-card p-6 flex items-start space-x-4">
+                    <i class="fa-solid fa-language text-indigo text-lg mt-1"></i>
+                    <div>
+                        <h3 class="font-medium text-ink text-sm">Elskill TOEFL Test</h3>
+                        <p class="text-xs text-soft mt-1">Score: 660</p>
+                        <p class="text-xs text-soft mt-2">Elskill English Course</p>
+                    </div>
+                </div>
+
+                <div class="bg-card p-6 flex items-start space-x-4">
+                    <i class="fa-brands fa-aws text-gold text-lg mt-1"></i>
+                    <div>
+                        <h3 class="font-medium text-ink text-sm">AWS Technical Essentials</h3>
+                        <p class="text-xs text-soft mt-1">Amazon Web Services</p>
+                        <p class="text-xs text-soft mt-2">Cloud infrastructure fundamentals</p>
+                    </div>
+                </div>
+
+                <div class="bg-card p-6 flex items-start space-x-4">
+                    <i class="fa-brands fa-ibm text-indigo text-lg mt-1"></i>
+                    <div>
+                        <h3 class="font-medium text-ink text-sm">IBM Data Science &amp; AI Fundamentals</h3>
+                        <p class="text-xs text-soft mt-1">IBM Academy</p>
+                        <p class="text-xs text-soft mt-2">Data science methodology &amp; artificial intelligence</p>
+                    </div>
+                </div>
+
+                <div class="bg-card p-6 flex items-start space-x-4">
+                    <i class="fa-solid fa-network-wired text-indigo text-lg mt-1"></i>
+                    <div>
+                        <h3 class="font-medium text-ink text-sm">Cisco Python &amp; JS Essentials 1 &amp; 2</h3>
+                        <p class="text-xs text-soft mt-1">Cisco Networking Academy</p>
+                        <p class="text-xs text-soft mt-2">Core programming &amp; algorithms</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 border-t rule">
+        <div class="max-w-6xl mx-auto px-5 sm:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+                <div class="lg:col-span-5 space-y-8">
+                    <div>
+                        <h2 class="font-serif text-3xl sm:text-4xl text-ink">Let's talk</h2>
+                        <p class="text-soft mt-4 leading-relaxed text-sm">
+                            I'm open to full-time roles, freelance projects, collaborative research, or just a conversation about AI and software engineering.
+                        </p>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="card-flat rounded-xl p-4 flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <i class="fa-solid fa-envelope text-indigo w-5"></i>
+                                <div>
+                                    <span class="text-xs text-soft block">Email</span>
+                                    <span class="text-sm font-medium text-ink">skeyshya2021@gmail.com</span>
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('skeyshya2021@gmail.com', 'Email copied to clipboard!')" class="text-soft hover:text-indigo p-2" title="Copy email">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <div class="card-flat rounded-xl p-4 flex items-center justify-between">
+                            <div class="flex items-center space-x-4">
+                                <i class="fa-solid fa-phone text-indigo w-5"></i>
+                                <div>
+                                    <span class="text-xs text-soft block">Phone / WhatsApp</span>
+                                    <span class="text-sm font-medium text-ink">+62 812-9076-1677 / +62 821-2126-8150</span>
+                                </div>
+                            </div>
+                            <button onclick="copyToClipboard('081290761677', 'Phone number copied to clipboard!')" class="text-soft hover:text-indigo p-2" title="Copy phone number">
+                                <i class="fa-regular fa-copy"></i>
+                            </button>
+                        </div>
+
+                        <div class="card-flat rounded-xl p-4 flex items-center space-x-4">
+                            <i class="fa-brands fa-linkedin text-indigo w-5"></i>
+                            <div>
+                                <span class="text-xs text-soft block">LinkedIn</span>
+                                <a href="https://www.linkedin.com/in/stefaniekeyshya/" target="_blank" rel="noopener" class="text-sm font-medium text-ink hover:text-indigo transition-colors">
+                                    linkedin.com/in/stefaniekeyshya
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="card-flat rounded-2xl p-8">
+                        <h3 class="font-serif text-xl text-ink mb-6">Send a message</h3>
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs text-soft mb-2">Full name</label>
+                                    <input type="text" required placeholder="Your name" class="w-full bg-paper border rule rounded-lg px-4 py-3 text-ink placeholder-soft/60 focus:outline-none focus:border-indigo text-sm transition-colors">
+                                </div>
+                                <div>
+                                    <label class="block text-xs text-soft mb-2">Email</label>
+                                    <input type="email" required placeholder="email@domain.com" class="w-full bg-paper border rule rounded-lg px-4 py-3 text-ink placeholder-soft/60 focus:outline-none focus:border-indigo text-sm transition-colors">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs text-soft mb-2">Subject</label>
+                                <input type="text" required placeholder="What's this about?" class="w-full bg-paper border rule rounded-lg px-4 py-3 text-ink placeholder-soft/60 focus:outline-none focus:border-indigo text-sm transition-colors">
+                            </div>
+                            <div>
+                                <label class="block text-xs text-soft mb-2">Message</label>
+                                <textarea rows="4" required placeholder="Write your message here..." class="w-full bg-paper border rule rounded-lg px-4 py-3 text-ink placeholder-soft/60 focus:outline-none focus:border-indigo text-sm transition-colors"></textarea>
+                            </div>
+                            <button type="submit" class="w-full py-3.5 rounded-lg bg-ink hover:bg-indigo-dark text-white font-medium transition-colors flex items-center justify-center space-x-2">
+                                <i class="fa-solid fa-paper-plane text-sm"></i>
+                                <span>Send message</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="mt-20 pt-8 border-t rule flex flex-col sm:flex-row items-center justify-between text-xs text-soft">
+                <p>© 2026 Stefanie Keyshya Ardadi. All rights reserved.</p>
+                <p class="mt-2 sm:mt-0">Built with Tailwind CSS &amp; HTML5</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modals -->
+    <div id="modal-lung" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-ink/70 backdrop-blur-sm">
+        <div class="bg-card rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative border rule max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('modal-lung')" class="absolute top-5 right-5 text-soft hover:text-ink text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flex items-center space-x-3 mb-4">
+                <span class="tag text-xs px-3 py-1 rounded-full">Research Assistant</span>
+                <span class="text-xs text-soft">Dec 2025 – Jan 2026</span>
+            </div>
+            <h3 class="font-serif text-2xl text-ink mb-3">Lung Cancer Detection System (Computer Vision)</h3>
+            <p class="text-sm text-soft leading-relaxed mb-4">
+                An advanced research project for automated medical image classification in lung cancer cases. Combines Convolutional Neural Network (CNN) and Vision Transformer (ViT) architectures to capture both local and contextual features simultaneously.
+            </p>
+            <h4 class="text-xs font-medium text-indigo mb-2">Key features &amp; improvements</h4>
+            <ul class="list-disc list-outside ml-4 text-xs text-soft space-y-1.5 mb-6">
+                <li>Integrated a DWT (Discrete Wavelet Transform) + SVD (Singular Value Decomposition) pipeline that improved accuracy to 80%.</li>
+                <li>Three-way classification: Normal, Benign, and Malignant images.</li>
+                <li>Interactive desktop GUI for image upload, preprocessing, and confidence-score visualization.</li>
+                <li>Migrated the algorithm from MATLAB to Python for production scalability.</li>
+            </ul>
+            <div class="flex justify-end pt-4 border-t rule">
+                <button onclick="closeModal('modal-lung')" class="px-5 py-2 rounded-lg bg-paper border rule text-ink text-xs font-medium hover:border-indigo">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-flower" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-ink/70 backdrop-blur-sm">
+        <div class="bg-card rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative border rule max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('modal-flower')" class="absolute top-5 right-5 text-soft hover:text-ink text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flex items-center space-x-3 mb-4">
+                <span class="tag text-xs px-3 py-1 rounded-full">Journal publication</span>
+                <span class="text-xs text-soft">Oct 2025 – Dec 2025</span>
+            </div>
+            <h3 class="font-serif text-2xl text-ink mb-3">Flower Species Classification using CNN and DWT</h3>
+            <p class="text-sm text-soft leading-relaxed mb-4">
+                A comparative study of a standard CNN versus a CNN enhanced with Discrete Wavelet Transform (DWT) for classifying 5 flower species across 3,000+ images.
+            </p>
+            <h4 class="text-xs font-medium text-indigo mb-2">Research results</h4>
+            <ul class="list-disc list-outside ml-4 text-xs text-soft space-y-1.5 mb-6">
+                <li>Accuracy improved from 81.29% (baseline CNN) to 82.73% (CNN + DWT).</li>
+                <li>Implemented Grad-CAM to visualize the image regions the model focused on.</li>
+                <li>Published in a reputable, peer-reviewed national journal.</li>
+            </ul>
+            <div class="flex justify-end pt-4 border-t rule">
+                <button onclick="closeModal('modal-flower')" class="px-5 py-2 rounded-lg bg-paper border rule text-ink text-xs font-medium hover:border-indigo">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-ecommerce" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-ink/70 backdrop-blur-sm">
+        <div class="bg-card rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative border rule max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('modal-ecommerce')" class="absolute top-5 right-5 text-soft hover:text-ink text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flex items-center space-x-3 mb-4">
+                <span class="tag text-xs px-3 py-1 rounded-full text-gold border-gold/40">Bronze medal winner</span>
+                <span class="text-xs text-soft">Jul 2025</span>
+            </div>
+            <h3 class="font-serif text-2xl text-ink mb-3">AI-Powered E-Commerce with DeepSeek API</h3>
+            <p class="text-sm text-soft leading-relaxed mb-4">
+                An e-commerce platform that combines AI-driven multilingual product recommendations with an interactive fashion-assistant agent.
+            </p>
+            <h4 class="text-xs font-medium text-indigo mb-2">Solution highlights</h4>
+            <ul class="list-disc list-outside ml-4 text-xs text-soft space-y-1.5 mb-6">
+                <li>Integrated the DeepSeek LLM API for real-time styling and outfit-matching consultation.</li>
+                <li>Fast Bootstrap-based frontend with a secure backend transaction architecture.</li>
+                <li>Won the Bronze Medal at a national AI innovation competition.</li>
+            </ul>
+            <div class="flex justify-end pt-4 border-t rule">
+                <button onclick="closeModal('modal-ecommerce')" class="px-5 py-2 rounded-lg bg-paper border rule text-ink text-xs font-medium hover:border-indigo">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-inventory" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-ink/70 backdrop-blur-sm">
+        <div class="bg-card rounded-2xl max-w-2xl w-full p-6 sm:p-8 relative border rule max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('modal-inventory')" class="absolute top-5 right-5 text-soft hover:text-ink text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flex items-center space-x-3 mb-4">
+                <span class="tag text-xs px-3 py-1 rounded-full">Industry internship</span>
+                <span class="text-xs text-soft">Mar 2025 – Jun 2025</span>
+            </div>
+            <h3 class="font-serif text-2xl text-ink mb-3">Inventory Management System — CV Prima Bella</h3>
+            <p class="text-sm text-soft leading-relaxed mb-4">
+                An operational information system to digitize inventory, manage the supplier chain, and automate purchase orders and periodic reporting.
+            </p>
+            <h4 class="text-xs font-medium text-indigo mb-2">Impact &amp; contribution</h4>
+            <ul class="list-disc list-outside ml-4 text-xs text-soft space-y-1.5 mb-6">
+                <li>Eliminated manual stock records and cut data-entry errors by up to 90%.</li>
+                <li>Built supplier management, order history, and automatic low-stock alert modules.</li>
+                <li>Developed the company profile website's frontend to strengthen the company's digital branding.</li>
+            </ul>
+            <div class="flex justify-end pt-4 border-t rule">
+                <button onclick="closeModal('modal-inventory')" class="px-5 py-2 rounded-lg bg-paper border rule text-ink text-xs font-medium hover:border-indigo">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-change-photo" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-ink/70 backdrop-blur-sm">
+        <div class="bg-card rounded-2xl max-w-md w-full p-6 relative border rule">
+            <button onclick="closeModal('modal-change-photo')" class="absolute top-5 right-5 text-soft hover:text-ink text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="flex items-center space-x-3 mb-4">
+                <i class="fa-solid fa-camera text-indigo"></i>
+                <div>
+                    <h3 class="font-serif text-lg text-ink">Set profile photo</h3>
+                    <p class="text-xs text-soft">Upload a local file or paste an image URL</p>
+                </div>
+            </div>
+
+            <div class="space-y-4 my-5">
+                <div>
+                    <label class="block text-xs text-soft mb-2">Upload from device</label>
+                    <input type="file" id="local-photo-input" accept="image/*" onchange="handleFileUpload(event)" class="w-full text-xs text-soft file:mr-4 file:py-2.5 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-medium file:bg-indigo file:text-white hover:file:bg-indigo-dark cursor-pointer bg-paper rounded-lg p-1.5 border rule">
+                </div>
+
+                <div class="flex items-center my-2">
+                    <div class="flex-grow border-t rule"></div>
+                    <span class="px-3 text-[10px] text-soft">or</span>
+                    <div class="flex-grow border-t rule"></div>
+                </div>
+
+                <div>
+                    <label class="block text-xs text-soft mb-2">Image URL</label>
+                    <input type="url" id="photo-url-input" placeholder="https://domain.com/my-photo.jpg" class="w-full bg-paper border rule rounded-lg px-4 py-2.5 text-ink placeholder-soft/60 focus:outline-none focus:border-indigo text-xs transition-colors">
+                </div>
+            </div>
+
+            <div class="flex justify-end space-x-3 pt-3 border-t rule">
+                <button onclick="closeModal('modal-change-photo')" class="px-4 py-2 rounded-lg border rule text-soft text-xs font-medium hover:text-ink">Cancel</button>
+                <button onclick="applyPhotoUrl()" class="px-5 py-2 rounded-lg bg-indigo text-white text-xs font-medium hover:bg-indigo-dark">Save photo</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        const filterBtns = document.querySelectorAll('.project-filter-btn');
+        const projectCards = document.querySelectorAll('.project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('bg-ink', 'text-white');
+                    b.classList.add('border', 'text-soft');
+                });
+                btn.classList.add('bg-ink', 'text-white');
+                btn.classList.remove('border', 'text-soft');
+
+                const filter = btn.getAttribute('data-filter');
+                projectCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        function openModal(id) {
+            document.getElementById(id).classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        function copyToClipboard(text, message) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(() => showToast(message));
+            } else {
+                const textArea = document.createElement("textarea");
+                textArea.value = text;
+                document.body.appendChild(textArea);
+                textArea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textArea);
+                showToast(message);
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = message;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+                toast.classList.remove('translate-y-0', 'opacity-100');
+            }, 3000);
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            showToast('Your message has been sent! I will reply as soon as possible.');
+            document.getElementById('contact-form').reset();
+        }
+
+        function applyPhotoUrl() {
+            const urlInput = document.getElementById('photo-url-input').value.trim();
+            if (urlInput) {
+                document.getElementById('profile-img').src = urlInput;
+                showToast('Profile photo updated!');
+                closeModal('modal-change-photo');
+            } else {
+                showToast('Please enter a valid photo URL or choose a file.');
+            }
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('profile-img').src = e.target.result;
+                    showToast('Profile photo uploaded!');
+                    closeModal('modal-change-photo');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
+</body>
+</html>

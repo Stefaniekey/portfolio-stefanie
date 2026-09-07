@@ -393,11 +393,13 @@
                     <p class="text-sm font-semibold text-gray-400 mb-4">Mercu Buana University</p>
 
                     <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
-                        <li>Developed an AI-based lung cancer detection system using Python, CNN, and Vision Transformer (ViT) for multi-class medical image classification.</li>
-                        <li>Designed a hybrid feature extraction pipeline (DWT, SVD) that improved model accuracy to 80%.</li>
-                        <li>Built and evaluated deep learning models for lung image classification (Normal, Benign, Malignant).</li>
-                        <li>Designed an interactive GUI application for image processing and automated visualization.</li>
-                        <li>Applied ensemble learning, confidence scoring, and optimized/migrated algorithms from MATLAB to Python.</li>
+                        <li>Developed a 5-class lung nodule classification system using Python, PyTorch, 3D CNN, and Vision 
+                            Transformer (ViT): Normal, Tiny/Large Benign, and Tiny/Large Malignant.</li>
+                        <li>Designed a DWT + SVD feature extraction and Cross-Attention fusion pipeline, achieving Best AUC 
+                            0.8068 and 45.8% improvement over the CNN baseline. </li>
+                        <li>Implemented Grad-CAM 3D XAI and a Streamlit GUI for real-time detection, 3D-DWT visualization, and 
+                            IoU analysis against radiologist annotations.</li>
+                        <li>Deployed on Streamlit Cloud for interactive demonstration: https://lightxai-wavenet-gui.streamlit.app</li>
                     </ul>
 
                     <div class="flex flex-wrap gap-2 mt-5 pt-4 border-t border-gray-800/60">

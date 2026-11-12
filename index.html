@@ -151,7 +151,7 @@
             html, body { background: #fff !important; color: #111827 !important; }
 
             /* hide interactive-only elements */
-            #navbar, #progress, .orb, .no-print, [id^="modal-"], .project-filter-wrap { display: none !important; }
+            #navbar, #progress, .orb, .no-print, [id^="modal-"], .project-filter-wrap, .btn-download { display: none !important; }
 
             /* make everything visible */
             .reveal { opacity: 1 !important; transform: none !important; }
@@ -286,7 +286,6 @@
                 <!-- Right: Transparent profile photo (no box, no circle) -->
                 <div class="lg:col-span-5 reveal d2">
                     <div class="profile-wrap">
-                        <!-- Taruh foto PNG transparan dengan nama pastfoto.png (fallback: pastfoto.jpeg) -->
                         <img id="profile-img"
                              src="pasfoto.png"
                              alt="Photo of Stefanie Keyshya Ardadi"
@@ -306,7 +305,7 @@
                             </div>
                             <span class="w-px h-8 bg-gray-700"></span>
                             <div class="text-center">
-                                <span class="count-up block text-2xl font-extrabold text-white" data-target="5" data-decimals="0" data-suffix="+">5+</span>
+                                <span class="count-up block text-2xl font-extrabold text-white" data-target="6" data-decimals="0" data-suffix="+">6+</span>
                                 <span class="text-[10px] text-gray-400 uppercase tracking-wider">Projects</span>
                             </div>
                             <span class="w-px h-8 bg-gray-700"></span>
@@ -432,7 +431,34 @@
 
             <div class="relative border-l-2 border-gray-800 ml-4 md:ml-32 space-y-12">
 
-                <!-- 1 -->
+                <!-- 0: NEW EXPERIENCE -->
+                <div class="reveal relative group">
+                    <div class="hidden md:block absolute -left-36 top-1.5 text-right w-28">
+                        <span class="text-xs font-mono text-brand-400 font-semibold">Sep 2026 - Present</span>
+                    </div>
+                    <div class="timeline-dot absolute -left-[17px] top-1.5 w-8 h-8 rounded-full bg-cardBg border-2 border-emerald-400 flex items-center justify-center text-emerald-400">
+                        <i class="fa-solid fa-eye text-xs"></i>
+                    </div>
+                    <div class="ml-8 md:ml-12 glass-card glow-border rounded-2xl p-6 sm:p-8">
+                        <span class="md:hidden text-xs font-mono text-brand-400 font-semibold block mb-2">Sep 2026 - Present</span>
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                            <h3 class="text-xl font-bold text-white">Research Assistant – AI-Driven Vision-Based Navigation Assistance</h3>
+                            <span class="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">Computer Vision / Mobile AI</span>
+                        </div>
+                        <p class="text-sm font-semibold text-gray-400 mb-4">Mercu Buana University</p>
+                        <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                            <li>Contributed to the research and development of a vision-based navigation assistance system using deep learning and multimodal scene understanding.</li>
+                            <li>Implemented EfficientNetV2-B0-based classification models for five weather categories and ten obstacle classes, achieving 91.16% and 99.07% accuracy, respectively.</li>
+                            <li>Designed a rule-based decision-level fusion pipeline combining scene classification and monocular distance estimation to generate contextual environmental descriptions and safety alerts.</li>
+                            <li>Integrated TensorFlow Lite models into a Flutter application with multilingual text-to-speech support in Indonesian, English, and Chinese.</li>
+                        </ul>
+                        <div class="flex flex-wrap gap-2 mt-5 pt-4 border-t border-gray-800/60">
+                            <span class="tag">Python</span><span class="tag">TensorFlow Lite</span><span class="tag">EfficientNetV2</span><span class="tag">Flutter</span><span class="tag">TTS</span><span class="tag">Multimodal AI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1: LightXAI -->
                 <div class="reveal relative group">
                     <div class="hidden md:block absolute -left-36 top-1.5 text-right w-28">
                         <span class="text-xs font-mono text-brand-400 font-semibold">Aug 2026 - Present</span>
@@ -451,7 +477,7 @@
                             <li>Developed a 5-class lung nodule classification system using Python, PyTorch, 3D CNN, and Vision Transformer (ViT): Normal, Tiny/Large Benign, and Tiny/Large Malignant.</li>
                             <li>Designed a DWT + SVD feature extraction and Cross-Attention fusion pipeline, achieving Best AUC 0.8068 and 45.8% improvement over the CNN baseline.</li>
                             <li>Implemented Grad-CAM 3D XAI and a Streamlit GUI for real-time detection, 3D-DWT visualization, and IoU analysis against radiologist annotations.</li>
-                            <li>Deployed on Streamlit Cloud for interactive demonstration: <a href="https://lightxai-wavenet-gui.streamlit.app" target="_blank" rel="noopener" class="text-brand-400 hover:underline">lightxai-wavenet-gui.streamlit.app</a></li>
+                            <li>Deployed on Streamlit Cloud for interactive demonstration: <a href="https://lightxai-wavenet-gui-newdashboard.streamlit.app/" target="_blank" rel="noopener" class="text-brand-400 hover:underline">lightxai-wavenet-gui-newdashboard.streamlit.app</a></li>
                         </ul>
                         <div class="flex flex-wrap gap-2 mt-5 pt-4 border-t border-gray-800/60">
                             <span class="tag">Python</span><span class="tag">PyTorch</span><span class="tag">Vision Transformer (ViT)</span><span class="tag">3D CNN</span><span class="tag">Cross-Attention</span><span class="tag">DWT-SVD</span><span class="tag">Grad-CAM</span><span class="tag">Streamlit</span>
@@ -588,6 +614,28 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                <!-- Card 0: NEW AI Navigation -->
+                <div class="reveal project-card glass-card glow-border lift rounded-2xl overflow-hidden group flex flex-col justify-between" data-category="ai">
+                    <div>
+                        <div class="relative h-48 bg-gradient-to-br from-slate-900 to-emerald-950 flex items-center justify-center p-6 border-b border-gray-800">
+                            <div class="icon-container"><i class="fa-solid fa-eye text-6xl text-emerald-400/80"></i></div>
+                            <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-xs font-mono">Mobile AI</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">AI Vision-Based Navigation Assistant</h3>
+                            <p class="text-xs text-gray-400 mb-4 line-clamp-3">Deep learning-based navigation system for visually impaired users. Integrates weather & obstacle classification with monocular distance estimation into a Flutter app for contextual safety alerts.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            <span class="tag-sm">EfficientNetV2</span><span class="tag-sm">TensorFlow Lite</span><span class="tag-sm">Flutter</span>
+                        </div>
+                        <button onclick="openModal('modal-nav')" class="w-full py-2 rounded-lg bg-gray-800 hover:bg-emerald-500 hover:text-white text-gray-300 text-xs font-semibold transition-colors flex items-center justify-center space-x-2">
+                            <span>Project Details</span><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                        </button>
+                    </div>
+                </div>
 
                 <!-- Card 1 -->
                 <div class="reveal project-card glass-card glow-border lift rounded-2xl overflow-hidden group flex flex-col justify-between" data-category="ai">
@@ -885,6 +933,33 @@
     </section>
 
     <!-- Modals -->
+
+    <!-- Modal 0: Navigation Assistant -->
+    <div id="modal-nav" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
+        <div class="glass-card bg-cardBg rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative border border-gray-700 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('modal-nav')" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
+            <div class="flex items-center space-x-3 mb-4">
+                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-xs font-mono">Research Assistant</span>
+                <span class="text-xs text-gray-400 font-mono">Sep 2026 - Present</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-3">AI-Driven Vision-Based Navigation Assistance</h3>
+            <p class="text-sm text-gray-300 leading-relaxed mb-4">
+                A mobile-based assistive technology designed for visually impaired users. It leverages computer vision and deep learning to understand the surrounding environment, detect obstacles, and provide real-time audio feedback. The system combines scene classification (weather) and obstacle detection with monocular distance estimation to generate actionable safety alerts.
+            </p>
+            <h4 class="text-xs font-bold text-emerald-400 font-mono uppercase mb-2">Key Features:</h4>
+            <ul class="list-disc list-inside text-xs text-gray-300 space-y-1.5 mb-6">
+                <li>Implemented EfficientNetV2-B0 for 5-class weather classification (91.16% accuracy) and 10-class obstacle classification (99.07% accuracy).</li>
+                <li>Designed a rule-based decision-level fusion pipeline combining scene classification, monocular distance estimation, and contextual safety alerts.</li>
+                <li>Deployed optimized TensorFlow Lite models into a Flutter application.</li>
+                <li>Integrated multilingual Text-to-Speech (TTS) in Indonesian, English, and Chinese.</li>
+            </ul>
+            <div class="flex justify-end pt-4 border-t border-gray-800">
+                <button onclick="closeModal('modal-nav')" class="px-5 py-2 rounded-xl bg-gray-800 text-white text-xs font-semibold hover:bg-gray-700">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 1: Lung -->
     <div id="modal-lung" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
         <div class="glass-card bg-cardBg rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative border border-gray-700 max-h-[90vh] overflow-y-auto">
             <button onclick="closeModal('modal-lung')" class="absolute top-5 right-5 text-gray-400 hover:text-white text-xl"><i class="fa-solid fa-xmark"></i></button>
@@ -995,8 +1070,8 @@
             </ul>
             <div class="mt-4 p-3 bg-gray-800/50 rounded-xl border border-gray-700 flex items-center justify-between gap-2 flex-wrap">
                 <span class="text-xs text-gray-300 font-mono"><i class="fa-solid fa-rocket text-cyan-400 mr-2"></i>Interactive GUI:</span>
-                <a href="https://lightxai-wavenet-gui.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-xs text-cyan-400 hover:text-white font-semibold transition-colors flex items-center gap-1">
-                    lightxai-wavenet-gui.streamlit.app <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                <a href="https://lightxai-wavenet-gui-newdashboard.streamlit.app/" target="_blank" rel="noopener noreferrer" class="text-xs text-cyan-400 hover:text-white font-semibold transition-colors flex items-center gap-1">
+                    lightxai-wavenet-gui-newdashboard.streamlit.app <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
                 </a>
             </div>
             <div class="flex flex-wrap gap-2 mt-4 pt-3 border-t border-gray-800">
